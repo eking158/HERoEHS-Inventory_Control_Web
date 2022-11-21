@@ -1,0 +1,57 @@
+.storages {
+    width: 60%;
+    border: 3px solid #1b5ac2;
+    background: #ffffff;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+
+.storage_406_button{
+    width: 33.3%;
+    right: 0px;
+    top: 0px;
+    position: relative;
+    border: 0px;
+    background: #1b5ac2;
+    outline: none;
+    float: left;
+    color: #ffffff;
+}
+.storage_406_button::after {
+    padding-bottom: 100%;
+  }
+
+
+.storage_1_button{
+    width: 33.3%;
+    right: 0px;
+    top: 0px;
+    position: relative;
+    border: 0px;
+    background: #1b5ac2;
+    outline: none;
+    float: left;
+    color: #ffffff;
+}
+.storage_1_button::after {
+    padding-bottom: 100%;
+  }
+
+
+.storage_2_button{
+    width: 33.3%;
+    right: 0px;
+    top: 0px;
+    position: relative;
+    border: 0px;
+    background: #1b5ac2;
+    outline: none;
+    float: left;
+    color: #ffffff;
+}
+.storage_2_button::after {
+    padding-bottom: 100%;
+  }
