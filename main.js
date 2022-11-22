@@ -18,6 +18,10 @@ app.get('/storage_2', function(req,res){
     res.sendFile(__dirname + "/public/storages/storage_2.html");
   })
 
+app.get('/json', function(req,res){
+    res.sendFile(__dirname + "/public/inventory_list_test_gui/json.html");
+})
+
 app.listen(3000, function(){
   console.log('Listening at 3000');
 })
