@@ -14,20 +14,21 @@
     $( "#tabs" ).tabs();
     $.getJSON("/inventory_list_test_gui/exel.json",function(data){
         $.each(data["datas"],function(index,value){
+          if(value.box==2){
             $('#mp').append(
-                "<div class=list_box onclick=detail("+value.mno+")><tr><td><img class=list_box_image src="+value.poster+"></td></tr></div>"
+                "<div class=list_box onclick=detail("+value.id+")><tr><td><img class=list_box_image src="+value.poster+"></td></tr></div>"
             );
+          }
         })
     })
   });
   
-  function detail(mno)
+  function detail(id)
   {
       $.getJSON("/inventory_list_test_gui/exel.json",function(data){
             $.each(data["datas"],function(index,value){
-                if(value.mno==mno)
+                if(value.id==id)
                 {
-                
                     $('#poster').attr("src",value.poster);
                     $('#title').text(value.title);
                     $('#director').text(value.director);

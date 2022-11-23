@@ -1,0 +1,21 @@
+.list_box {
+    height: 20vh;
+    width: 96%;
+    border: 6px solid #1b5ac2;
+    padding:10px;
+    background: #555353;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.list_box_image {
+    height: 96%;
+    position: relative;
+    top: 50%;
+    right: -0.6%;
+    transform: translate(0%,-50%);
+}
+.list_box_image::after {
+    padding-top: 100%;
+  }

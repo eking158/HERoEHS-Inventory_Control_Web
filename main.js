@@ -22,6 +22,12 @@ app.get('/json', function(req,res){
     res.sendFile(__dirname + "/public/inventory_list_test_gui/json.html");
 })
 
+app.get('/inventory/:id', function(req,res){
+  const {id} = req.params;
+  res.sendFile(__dirname + "/public/test/json_test.html");
+})
+
+
 app.listen(3000, function(){
   console.log('Listening at 3000');
 })

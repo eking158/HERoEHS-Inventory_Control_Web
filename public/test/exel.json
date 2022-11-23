@@ -1,0 +1,196 @@
+{
+    "main(소모품)": [],
+    "main(비소모품)": [],
+    "예시": [
+        {
+            "name": "빵판",
+            "L_category": "전장",
+            "S_category": "빵판",
+            "room": 406,
+            "box": 1,
+            "count": 9,
+            "etc": "-",
+            "id": 0
+        },
+        {
+            "name": "토글스위치",
+            "L_category": "전장",
+            "S_category": "스위치",
+            "room": 406,
+            "box": 1,
+            "count": 2,
+            "etc": "ㅇㅁㄴ",
+            "id": 1
+        },
+        {
+            "name": "비상정지스위치",
+            "L_category": "전장",
+            "S_category": "스위치",
+            "room": 406,
+            "box": 1,
+            "count": 2,
+            "etc": "-",
+            "id": 2
+        },
+        {
+            "name": "푸쉬스위치",
+            "L_category": "전장",
+            "S_category": "스위치",
+            "room": 406,
+            "box": 1,
+            "count": 3,
+            "etc": "ㅇㅁㄴ",
+            "id": 3
+        },
+        {
+            "name": "커버토글스위치",
+            "L_category": "전장",
+            "S_category": "스위치",
+            "room": 406,
+            "box": 1,
+            "count": 4,
+            "etc": "-",
+            "id": 4
+        },
+        {
+            "name": "DC잭(암)",
+            "L_category": "전장",
+            "S_category": "전원 공급",
+            "room": 406,
+            "box": 2,
+            "count": 5,
+            "etc": "-",
+            "id": 5
+        },
+        {
+            "name": "DC잭(수)",
+            "L_category": "전장",
+            "S_category": "전원 공급",
+            "room": 406,
+            "box": 2,
+            "count": 3,
+            "etc": "ㅇㄴㅁ",
+            "id": 6
+        },
+        {
+            "name": "220v 파워케이블",
+            "L_category": "케이블",
+            "S_category": "파워 케이블",
+            "room": 406,
+            "box": 3,
+            "count": 2,
+            "etc": "-",
+            "id": 7
+        },
+        {
+            "name": "220v 3구 클로바케이블",
+            "L_category": "케이블",
+            "S_category": "파워 케이블",
+            "room": 406,
+            "box": 3,
+            "count": 2,
+            "etc": "-",
+            "id": 8
+        },
+        {
+            "name": "220v 2구 케이블",
+            "L_category": "케이블",
+            "S_category": "파워 케이블",
+            "room": 406,
+            "box": 3,
+            "count": 2,
+            "etc": "-",
+            "id": 9
+        },
+        {
+            "name": "어뎁터12V5A",
+            "L_category": "케이블",
+            "S_category": "어뎁터",
+            "room": 406,
+            "box": 3,
+            "count": 3,
+            "etc": "-",
+            "id": 10
+        },
+        {
+            "name": "어뎁터12V2A",
+            "L_category": "케이블",
+            "S_category": "어뎁터",
+            "room": 406,
+            "box": 3,
+            "count": 4,
+            "etc": "ㅁㄴㅇㅁㄴ",
+            "id": 11
+        },
+        {
+            "name": "어뎁터19V4.3A",
+            "L_category": "케이블",
+            "S_category": "어뎁터",
+            "room": 406,
+            "box": 3,
+            "count": 2,
+            "etc": "-",
+            "id": 12
+        },
+        {
+            "name": "로보티즈4P-200mm",
+            "L_category": "케이블",
+            "S_category": "다이나믹셀 케이블",
+            "room": 406,
+            "box": 4,
+            "count": 5,
+            "etc": "-",
+            "id": 13
+        },
+        {
+            "name": "로보티즈4P-140mm",
+            "L_category": "케이블",
+            "S_category": "어뎁터",
+            "room": 406,
+            "box": 4,
+            "count": 7,
+            "etc": "ㄴㅁㅇㅁㄴ",
+            "id": 14
+        },
+        {
+            "name": "로보티즈4P-60mm",
+            "L_category": "케이블",
+            "S_category": "다이나믹셀 케이블",
+            "room": 406,
+            "box": 4,
+            "count": 5,
+            "etc": "ㅇㄴㅇ",
+            "id": 15
+        },
+        {
+            "name": "소형 DC 모터",
+            "L_category": "모터",
+            "S_category": "dc 모터",
+            "room": 406,
+            "box": 5,
+            "count": 3,
+            "etc": "-",
+            "id": 16
+        },
+        {
+            "name": "MX28AT-485",
+            "L_category": "모터",
+            "S_category": "다이나믹셀",
+            "room": 406,
+            "box": 5,
+            "count": 7,
+            "etc": "able 프로젝트",
+            "id": 17
+        },
+        {
+            "name": "MX64AT-485",
+            "L_category": "모터",
+            "S_category": "다이나믹셀",
+            "room": 406,
+            "box": 5,
+            "count": 35,
+            "etc": "-",
+            "id": 18
+        }
+    ]
+}
