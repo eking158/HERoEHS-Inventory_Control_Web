@@ -1,0 +1,41 @@
+.utility {
+    width: 96vw;
+    outline: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0vmin);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.home_button{
+    width: 4vmin;
+    height: 4vmin;
+    border: 0px;
+    background: #1b5bc200;
+    outline: none;
+    color: #ffffff;
+    border-radius: 15px;
+    font-family: "Font Awesome 5 Free"; 
+}
+
+.back_button{
+    width: 4vmin;
+    height: 4vmin;
+    border: 0px;
+    background: #1b5bc200;
+    outline: none;
+    color: #ffffff;
+    border-radius: 15px;
+}
+
+.add_button{
+    width: 4vmin;
+    height: 4vmin;
+    border: 0px;
+    background: #1b5bc200;
+    outline: none;
+    color: #ffffff;
+    border-radius: 15px;
+}

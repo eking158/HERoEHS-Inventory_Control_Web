@@ -28,6 +28,19 @@ app.get('/storage_2/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
 
+app.get('/search', function(req,res){
+  res.sendFile(__dirname + "/public/searching/searching.html");
+})
+
+
+app.get('/test', function(req,res){
+  res.sendFile(__dirname + "/public/test/test.html");
+})
+
+app.get('/searching_test', function(req,res){
+  res.sendFile(__dirname + "/public/searching/searching_test.html");
+})
+
 app.listen(3000, function(){
   console.log('Listening at 3000');
 })

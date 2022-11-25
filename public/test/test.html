@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/test/css/list_box.css" />
+  <link rel="stylesheet" href="/buttons/utility_button.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- get current storage and box number from address  -->
+  <script type="text/javascript">
+    var s = location.href;
+    var split_1 = s.split('/')[3];
+    var split_2 = split_1.split('?')[1];
+    var split_3 = split_2.split('&');
+    var object_name=decodeURI(split_3[0].substring(12).replace(/\+/g," "));
+    var object_L_category=decodeURI(split_3[1].substring(11).replace(/\+/g, ' '));
+    var object_S_category=decodeURI(split_3[2].substring(11).replace(/\+/g, ' '));
+    var object_room=decodeURI(split_3[3].substring(5).replace(/\+/g, ' '));
+    var object_box=decodeURI(split_3[4].substring(4).replace(/\+/g, ' '));
+    document.writeln(split_3);
+    document.writeln(object_name);
+    document.writeln(object_L_category);
+    document.writeln(object_S_category);
+    document.writeln(object_box);
+    document.writeln(object_room);
+    if(object_box=="")
+    document.writeln("success");
+    else
+    document.writeln("fale");
+  </script>
+</head>
+
+<body>
+  <!-- utility bar  -->
+  <div class="utility">
+    <input class="home_button" type="image" value="home" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+    <input class="add_button" type="image" value="add" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+    <input class="back_button" type="image" value="back" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
+  </div>
+
+
+  <!-- object add pop up window  -->
+  <div class="container">
+    <div>
+      <table class="table">
+        <tr id="mp"></tr>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <div id="dialog" title="물품 추가" style="display:none">
+        <!-- send object datas  -->
+      <form action="/searching_test">
+          <label for="object_name">물품명:</label><br>
+          <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
+          <label for="object_L_category">대분류:</label><br>
+          <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
+          <label for="object_S_category">소분류:</label><br>
+          <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
+          <label for="object_room">창고 위치:</label><br>
+          <select style="width: 30%;" id="object_room" name="object_room">
+              <option value="">---</option>
+              <option value="406">406호</option>
+              <option value="storage_1">창고 1</option>
+              <option value="storage_2">창고 2</option>
+          </select><br>
+          <label for="object_box">박스 위치(숫자):</label><br>
+          <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
+
+          <label>소모품 여부:</label><br>
+              <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables">
+              <label for="no_consumables">비소모품</label><br>
+              <input type="radio" id="consumables" name="consumables_check" value="consumables">
+              <label for="consumables">소모품</label><br><br>
+          <input type="submit" value="Submit">
+        </form> 
+      </div>
+   </div>
+  </div>
+
+  <script>
+    function movepage_utility(target) {
+                if(target=="home"){
+                    location.href = "/test";
+                }
+                else if(target=="back"){
+                    location.href = "/test";
+                }
+                //make popup window
+                else if(target=="add"){
+                    $("#dialog").dialog({ 
+                        autoOpen: true, 
+                        width: 400,
+                        height:600,
+                        modal: true
+                    });
+                    return true;
+                }
+            }
+  </script>
+</body>
+</html>

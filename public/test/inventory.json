@@ -1,15 +1,27 @@
 {
-    "406_consume": [
-    {
-        "name": "M3-12",
-        "L_category": "너트/볼트 ",
-        "S_category": "너트류",
-        "room": 406,
-        "box": 0,
-        "count": "소모품",
-        "etc": "-",
-        "id": 0
-    }
+    "storage_1": [
+        {
+            "name": "빵판-red",
+            "L_category": "전장",
+            "S_category": "빵판",
+            "room": "storage_1",
+            "box": 1,
+            "count": 2,
+            "etc": "-",
+            "id": 0
+        }
+    ],
+    "storage_2": [
+        {
+            "name": "빵판-blue",
+            "L_category": "전장",
+            "S_category": "빵판",
+            "room": "storage_2",
+            "box": 5,
+            "count": 10,
+            "etc": "-",
+            "id": 0
+        }
     ],
     "406": [
         {
@@ -201,6 +213,16 @@
             "count": 35,
             "etc": "-",
             "id": 18
+        },
+        {
+            "name": "M3-12",
+            "L_category": "너트/볼트 ",
+            "S_category": "너트류",
+            "room": 406,
+            "box": 0,
+            "count": "소모품",
+            "etc": "-",
+            "id": 22
         }
     ]
 }
