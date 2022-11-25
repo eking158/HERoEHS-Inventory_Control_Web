@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="searching_bar/searching_bar_advanced.css" />
+    <link rel="stylesheet" href="logo/logo.css" />
+    <link rel="stylesheet" href="/buttons/box_button.css" />
+    <link rel="stylesheet" href="/storages/css/storages.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script type="text/javascript">
+        var s = location.href;
+        var storage_id = s.split('/')[3];
+        //document.writeln(storage_id);
+        if(storage_id == "storage_1")
+            document.write("<title>창고 1 재고 현황</title>");
+        if(storage_id == "storage_2")
+            document.write("<title>창고 2 재고 현황</title>");
+        if(storage_id == "406")
+            document.write("<title>406호 재고 현황</title>");
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var element = document.getElementById("title_name");
+
+    </script>
+
+    <div class="logo">
+        <img class="logo_logo" src="/images/logos/logo.png">
+        <img class="logo_title" src="/images/logos/title.png">
+    </div>
+
+    <div class="searching_bar_ad">
+        <form action="." method="post">
+            <input class="searching_bar_input_ad" type="text" placeholder="검색어를 입력해 주세요">
+            <button class="searching_bar_button_ad" type="submit">
+                <i style="font-size: 2vmin" class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var s = location.href;
+        var storage_id = s.split('/')[3];
+    //document.writeln(storage_id);
+        if(storage_id == "storage_1")
+            document.write("<h1 class=title>창고 1 재고 박스</h1>");
+        if(storage_id == "storage_2")
+            document.write("<h1 class=title>창고 2 재고 박스</h1>");
+        if(storage_id == "406")
+            document.write("<h1 class=title>406호 재고 박스</h1>");
+    </script>
+
+    <div class="box">
+        <script type="text/javascript">
+            //각 창고별 박스 수량 지정
+            if(storage_id == "storage_1")
+                var box_num=13;
+            if(storage_id == "storage_2")
+                var box_num=5;
+            if(storage_id == "406")
+                var box_num=9;
+            for (var i = 0; i <= box_num; i++) {
+                if(i==0){
+                    document.write("<input class=box_button type=button value=소모품 onclick=movepage_box("+(i)+") />");
+                }
+                else if(i==box_num){
+                    document.write("<input class=back_button type=image img src=images/buttons/back.png value=back onclick=movepage_main() />");
+                }
+                else
+                document.write("<input class=box_button type=button value=box_" +(i)+" onclick=movepage_box("+(i)+") />");
+            }
+        </script>
+    </div>
+
+    <script>
+        function movepage_main() {
+            location.href = "/";
+        }
+        function movepage_box(box_id) {
+            location.href = storage_id+"/"+ String(box_id);
+        }
+    </script>
+</body>
+
+</html>
