@@ -46,7 +46,7 @@
                 <table class=list_box_table height=100%>\
                 <tr>\
                     <td width=20% rowspan=2>\
-                      <img class=list_box_image src=/images/objects/"+value.name+".png>\
+                      <img class=list_box_image src=/images/objects/"+value.name+".png onerror=this.src='/images/logos/logo.png';>\
                     </td>\
                     <td width=28%>물품명: " +value.name+"</td>\
                     <td width=15%>창고 위치: " +value.room+"</td>\
@@ -141,7 +141,7 @@
         <table class="table">
           <tr>
             <td width="20%" class="text-center" colspan="2">
-              <img src="" height=100% id="picture">
+              <img src="" height=120vmin id="picture" onerror="this.src='/images/logos/logo_inverted.png';">
             </td>
           </tr>
           <tr>
