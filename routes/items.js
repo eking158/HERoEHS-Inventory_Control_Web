@@ -16,7 +16,7 @@ router.post('/', async (req, res, next) => {
                 },
             }
         });
-        // console.log(search_result);
+        console.log(search_result);
         res.status(201).json(search_result);
     } catch (err) {
         console.error(err);

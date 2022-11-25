@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="kr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +9,34 @@
     <link rel="stylesheet" href="buttons/back_button.css" />
     <title>storage_2.html</title>
 </head>
+
 <body>
     <h1>storage 2</h1>
 
-    <div class="searching_bar">
-        <input class="searching_bar_input" type="text" placeholder="set test">
-        <button class="searching_bar_button">search</button>
-    </div>
+    <form id="item-search">
+        <div class="searching_bar">
+            <input class="searching_bar_input" id="search_item" type="text" placeholder="검색어 입력">
+            <button class="searching_bar_button" type="submit" onclick="movepage_search()">검색</button>
+        </div>
+    </form>
+    <script>
+        function movepage_search() {
+            location.href = "/search";
+        }
+    </script>
 
     <p>보노보노</p>
 
-    <div class="back"> 
-        <input class="back_button" type="image" img src="../images/back.png" value="back" onclick="movepage_main()"/>
+    <div class="back">
+        <input class="back_button" type="image" img src="../images/back.png" value="back" onclick="movepage_main()" />
     </div>
-        <script>
-            function movepage_main() {
-                location.href = "/";
-            }
-        </script>
-    </body>
+    <script>
+        function movepage_main() {
+            location.href = "/";
+        }
+    </script>
+
+    <script src="/storage_1.js"></script>
+</body>
+
 </html>

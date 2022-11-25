@@ -30,6 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/items', itemsRouter);
 
+app.get('/search', function(req,res){
+  res.sendFile(__dirname + "/public/searching_bar/search.html");
+})
+
 app.get('/406', function(req,res){
   res.sendFile(__dirname + "/public/storages/406.html");
 })
@@ -59,5 +63,3 @@ app.use((err, req, res, next) => {
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');
 });
-
-app.use(express.static('public'));

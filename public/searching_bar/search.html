@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>물품 검색</title>
+    <style>
+      table { border: 1px solid black; border-collapse: collapse; }
+      table th, table td { border: 1px solid black; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form id="item-search">
+        <fieldset>
+          <legend>물품 검색</legend>
+          <input id="search_item" type="text" placeholder="검색어 입력">
+          <button type="submit">검색</button>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+    <table id="item-list">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>물품명</th>
+        <th>대분류</th>
+        <th>소분류</th>
+        <th>창고 위치</th>
+        <th>박스 위치</th>
+        <th>수량</th>
+        <th>비고</th>
+      </tr>
+      </thead>
+      <tbody>
+        <!-- {% for item in itemTable %}
+        <tr>
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.L_category}}</td>
+          <td>{{item.S_category}}</td>
+          <td>{{item.room}}</td>
+          <td>{{item.box}}</td>
+          <td>{{item.count}}</td>
+          <td>{{item.etc}}</td>
+        </tr>
+        {% endfor %} -->
+      </tbody>
+    </table>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/search.js"></script>
+  </body>
+</html>
