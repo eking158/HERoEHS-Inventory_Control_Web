@@ -24,7 +24,7 @@
   }
 
 
-.storage_1_button{
+.B05_button{
     width: 33.3%;
     right: 0px;
     top: 0px;
@@ -36,12 +36,12 @@
     color: #ffffff;
     border-radius: 35px;
 }
-.storage_1_button::after {
+.B05_button::after {
     padding-bottom: 100%;
   }
 
 
-.storage_2_button{
+.B09-3_button{
     width: 33.3%;
     right: 0px;
     top: 0px;
@@ -53,7 +53,7 @@
     color: #ffffff;
     border-radius: 35px;
 }
-.storage_2_button::after {
+.B09-3_button::after {
     padding-bottom: 100%;
   }
 

@@ -10,21 +10,21 @@ app.get('/406', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
   })
 
-app.get('/storage_1', function(req,res){
+app.get('/B05', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
   })
 
-app.get('/storage_2', function(req,res){
+app.get('/B09-3', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
 })
 
 app.get('/406/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
-app.get('/storage_1/:id', function(req,res){
+app.get('/B05/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
-app.get('/storage_2/:id', function(req,res){
+app.get('/B09-3/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
 
@@ -32,14 +32,6 @@ app.get('/search', function(req,res){
   res.sendFile(__dirname + "/public/searching/searching.html");
 })
 
-
-app.get('/test', function(req,res){
-  res.sendFile(__dirname + "/public/test/test.html");
-})
-
-app.get('/searching_test', function(req,res){
-  res.sendFile(__dirname + "/public/searching/searching_test.html");
-})
 
 app.listen(3000, function(){
   console.log('Listening at 3000');

@@ -20,10 +20,13 @@
 <body>
     <!-- utility bar  -->
     <div class="utility">
-        <input class="home_button" type="image" value="home" img src="images/icons/home.png" onclick="movepage_utility('home')" />
-        <input class="add_button" type="image" value="add" img src="images/icons/add.png" onclick="movepage_utility('add')" />
-        <input class="back_button" type="image" value="back" img src="images/icons/back.png" onclick="movepage_utility('back')" />
-    </div>
+        <input class="utility_button" type="image" value="home" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+        <div>
+        <input class="utility_button" type="image" value="add" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+        <input class="utility_button" type="image" value="search" img src="/images/icons/search.png" onclick="movepage_utility('search')" />
+      </div>
+        <input class="utility_button" type="image" value="back" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
+      </div>
 
     <!-- logo  -->
     <div class="logo">
@@ -33,8 +36,13 @@
 
     <!-- searching bar (with animation)  -->
     <div class="searching_bar_ad">
-        <form action="." method="post">
-            <input class="searching_bar_input_ad" type="text" placeholder="검색어를 입력해 주세요">
+        <form action="/search">
+            <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name" placeholder="검색어를 입력해 주세요">
+            <input type="text" id="object_L_category" name="object_L_category" style=display:none; value="">
+            <input type="text" id="object_S_category" name="object_S_category" style=display:none; value="">
+            <input type="text" id="object_room" name="object_room" style=display:none; value="">
+            <input type="number" id="object_box" name="object_box" style=display:none; value="">
+            <input type="text" id="consumables_check" name="consumables_check" style=display:none; value="">
             <button class="searching_bar_button_ad" type="submit">
                 <i style="font-size: 2vmin" class="fas fa-search"></i>
             </button>
@@ -44,26 +52,21 @@
     <!-- select storages button  -->
     <div class="storages"> 
         <input class="storage_406_button" type="image" img src="images/buttons/406.png" onmouseover="this.src='images/buttons/406_picture.png';" onmouseout="this.src='images/buttons/406.png';" value="406" onclick="movepage_406()"/>
-        <input class="storage_1_button" type="image" img src="images/buttons/storage_1.png" onmouseover="this.src='images/buttons/storage1_picture.png';" onmouseout="this.src='images/buttons/storage_1.png';" value="storage 1" onclick="movepage_s1()"/>
-        <input class="storage_2_button" type="image" img src="images/buttons/storage_2.png" onmouseover="this.src='images/buttons/storage2_picture.png';" onmouseout="this.src='images/buttons/storage_2.png';" value="storage 2" onclick="movepage_s2()"/>
+        <input class="B05_button" type="image" img src="images/buttons/B05.png" onmouseover="this.src='images/buttons/B05_picture.png';" onmouseout="this.src='images/buttons/B05.png';" value="storage 1" onclick="movepage_s1()"/>
+        <input class="B09-3_button" type="image" img src="images/buttons/B09-3.png" onmouseover="this.src='images/buttons/B09-3_picture.png';" onmouseout="this.src='images/buttons/B09-3.png';" value="storage 2" onclick="movepage_s2()"/>
     </div>
 
     <!-- object add pop up window  -->
     <div class="container">
-        <div>
-          <table class="table">
-            <tr id="mp"></tr>
-          </table>
-        </div>
         <div class="col-sm-6">
           <div id="dialog" title="물품 추가" style="display:none">
             <!-- send object datas  -->
-          <form action="/images/objects/">
+          <form action="/images/objects/"> <!-- edit submit  -->
             <label for="object_picture">물품 사진:</label><br>
             <input type="file" id="object_picture" name="object_picture" accept="image/png, image/jpeg"><br>
             <input type="submit" value="Submit"><br><br>
         </form>
-        <form action="/action_page.php">
+        <form action="/action_page.php"> <!-- edit submit  -->
             <label for="object_name">물품명:</label><br>
             <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
             <label for="object_L_category">대분류:</label><br>
@@ -73,8 +76,8 @@
             <label for="object_room">창고 위치:</label><br>
             <select style="width: 30%;" id="object_room" name="object_room">
                 <option value="406">406호</option>
-                <option value="storage_1">창고 1</option>
-                <option value="storage_2">창고 2</option>
+                <option value="B05">창고1(B05)</option>
+                <option value="B09-3">창고2(B09-3)</option>
             </select><br>
             <label for="object_box">박스 위치(숫자):</label><br>
             <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
@@ -106,16 +109,49 @@
           </div>
        </div>
       </div>
+
+      <!-- advanced searching pop up window  -->
+      <div class="container">
+        <div class="col-sm-6">
+          <div id="searching" title="물품 상세 검색" style="display:none">
+            <!-- send object datas  -->
+          <form action="/search">
+              <label for="object_name">물품명:</label><br>
+              <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
+              <label for="object_L_category">대분류:</label><br>
+              <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
+              <label for="object_S_category">소분류:</label><br>
+              <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
+              <label for="object_room">창고 위치:</label><br>
+              <select style="width: 30%;" id="object_room" name="object_room">
+                  <option value="">---</option>
+                  <option value="406">406호</option>
+                  <option value="B05">창고1(B05)</option>
+                  <option value="B09-3">창고2(B09-3)</option>
+              </select><br>
+              <label for="object_box">박스 위치(숫자):</label><br>
+              <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
+    
+              <label>소모품 여부:</label><br>
+                  <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
+                  <label for="no_consumables">비소모품</label><br>
+                  <input type="radio" id="consumables" name="consumables_check" value="consumables">
+                  <label for="consumables">소모품</label><br><br>
+              <input type="submit" value="Submit">
+            </form> 
+            </div>
+         </div>
+        </div>
       
         <script>
             function movepage_406() {
                 location.href = "/406";
             }
             function movepage_s1() {
-                location.href = "/storage_1";
+                location.href = "/B05";
             }
             function movepage_s2() {
-                location.href = "/storage_2";
+                location.href = "/B09-3";
             }
             function movepage_utility(target) {
                 if(target=="home"){
@@ -134,6 +170,15 @@
                     });
                     return true;
                 }
+                else if(target=="search"){
+                      $("#searching").dialog({ 
+                          autoOpen: true, 
+                          width: 400,
+                          height:600,
+                          modal: true
+                      });
+                      return true;
+                  }
             }
         </script>
     </body>

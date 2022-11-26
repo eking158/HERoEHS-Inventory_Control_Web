@@ -1,22 +1,22 @@
 {
-    "storage_1": [
+    "B05": [
         {
             "name": "빵판-red",
             "L_category": "전장",
             "S_category": "빵판",
-            "room": "storage_1",
+            "room": "B05",
             "box": 1,
             "count": 2,
             "etc": "-",
             "id": 0
         }
     ],
-    "storage_2": [
+    "B09-3": [
         {
             "name": "빵판-blue",
             "L_category": "전장",
             "S_category": "빵판",
-            "room": "storage_2",
+            "room": "B09-3",
             "box": 5,
             "count": 10,
             "etc": "-",
