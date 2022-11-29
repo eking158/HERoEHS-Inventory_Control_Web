@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript">
+            var s = location.href;
+            var req_type = s.split('/')[3].split('?')[0];
+            var object_id = s.split('/')[3].split('=');
+            if(req_type == 'change.php'){
+                var storage_id = object_id[1].split('&')[0];
+                var box_id = object_id[2].split('&')[0];
+                document.writeln(object_id[1].split('&')[0]);
+                document.writeln(object_id[2].split('&')[0]);
+                document.writeln("send complete!");
+                location.href = "/" + storage_id + "/" + box_id;
+            }
+            else if(req_type == 'action_page.php'){
+                location.href = "/"
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+    <script>
+    </script>
+</html>

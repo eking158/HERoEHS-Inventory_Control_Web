@@ -1,0 +1,30 @@
+.utility {
+    width: 96vw;
+    outline: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0vmin);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.utility_button{
+    width: 4vmin;
+    height: 4vmin;
+    border: 0px;
+    background: #1b5bc200;
+    outline: none;
+    color: #ffffff;
+    border-radius: 15px;
+}
+.utility_data{
+    width: 4vmin;
+    height: 4vmin;
+    border: 0px;
+    background: #1b5bc200;
+    outline: none;
+    color: #ffffff;
+    border-radius: 15px;
+    float: left;
+    }

@@ -1,0 +1,24 @@
+.box {
+    width: 75vmin;
+    border: 3px solid #1b5bc200;
+    background: #28267e00;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 25vmin);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-evenly;
+}
+
+.box_button{
+    width: 15vmin;
+    height: 15vmin;
+    border: 0px;
+    background: #045a19;
+    outline: none;
+    color: #ffffff;
+    font-size: 3vmin;
+    border-radius: 15px;
+}

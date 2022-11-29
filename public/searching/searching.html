@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/test/css/list_box.css" />
+  <link rel="stylesheet" href="/buttons/utility_button.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- get search keywards from address  -->
+  <script type="text/javascript">
+    var s = location.href;
+    var split_1 = s.split('/')[3];
+    var split_2 = split_1.split('?')[1];
+    var split_3 = split_2.split('&');
+    var object_name=decodeURI(split_3[0].substring(12).replace(/\+/g," "));                //get name
+    //split address
+    var object_L_category=decodeURI(split_3[1].substring(18).replace(/\+/g, ' '));         //get L category
+    var object_S_category=decodeURI(split_3[2].substring(18).replace(/\+/g, ' '));         //get S category
+    var object_room=decodeURI(split_3[3].substring(12).replace(/\+/g, ' '));               //get room
+    var object_box=decodeURI(split_3[4].substring(11).replace(/\+/g, ' '));                //get box
+    var object_consumable_check=decodeURI(split_3[5].substring(18).replace(/\+/g, ' '));   //get consumable check
+    if(object_consumable_check=="consumables")
+      object_consumable_check=1;  //소모품이면 1
+    else if(object_consumable_check=="no_consumables")
+      object_consumable_check=0; //비소모품이면 0
+
+      //document.writeln(object_name);
+  </script>
+
+  <!-- make table list from json file  -->
+  <script>
+    $( function() {
+      //$( "#dialog" ).dialog();
+      $( "#tabs" ).tabs();
+      $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
+        $.each(data["datas"],function(index,value){
+          var condition_0=(object_room=="" ? value.room : object_room);
+          var condition_1=(object_box=="" ? value.box : object_box);
+          var condition_2=(object_L_category=="" ? value.L_category : object_L_category);
+          var condition_3=(object_S_category=="" ? value.S_category : object_S_category);
+          var condition_4=(object_consumable_check==1 ? "소모품" : value.count);
+          var condition_5=(object_name=="" ? value.name : object_name);
+          if(value.room==condition_0&&value.box==condition_1 && value.L_category.indexOf(condition_2)!=-1 && value.S_category.indexOf(condition_3)!=-1 && value.count==condition_4 && String(value.name).indexOf(condition_5)!=-1){
+            $('#picture').attr("src","/images/objects/"+value.name+".png");
+            $('#mp').append(
+              "<div class=list_box onclick=detail("+value.id+")>\
+                <table class=list_box_table height=100%>\
+                <tr>\
+                    <td width=20% rowspan=2>\
+                      <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/logo.png';>\
+                    </td>\
+                    <td width=28%>물품명: " +value.name+"</td>\
+                    <td width=15%>창고 위치: " +value.room+"</td>\
+                    <td width=25%>대분류: " +value.L_category+"</td>\
+                    <td width=32% class=text-center rowspan=2 style=font-size:1.6vmin;>"+value.etc+"</td>\
+                  </tr>\
+                  <tr>\
+                    <td>수량: " +value.count+"</td>\
+                    <td>박스 위치: " +value.box+"</td>\
+                    <td>소분류: " +value.S_category+"</td>\
+                  </tr>\
+                  </table>\
+                </div>"
+            );
+          }
+          $('input[name=new_defalut_id]').attr('value',data["datas"].length);
+          $('input[name=new_defalut_name]').attr('value','-');
+          $('input[name=new_defalut_box]').attr('value',0);
+          $('input[name=new_defalut_L_category]').attr('value','-');
+          $('input[name=new_defalut_S_category]').attr('value','-');
+        })
+      })
+    });
+    
+    //make popup page data
+    function detail(id)
+    {
+        $.getJSON("/test/inventory.json",function(data){  //json 파일 경로 수정 필요
+            $.each(data["datas"],function(index,value){
+                 if(value.id==id)
+                  {
+                      $('#picture').attr("src","/images/objects/"+value.name+".png");
+                      $('input[name=object_id]').attr('value',value.id);
+                      $('#name').text(value.name);
+                      $('#L_category').text(value.L_category);
+                      $('#S_category').text(value.S_category);
+                      $('#room').text(value.room);
+                      $('#box').text(value.box);
+                      $('#count').text(value.count);
+                      $('#etc').text(value.etc);
+                      if(value.count!="소모품")
+                        $('#edit_count').html("\
+                          <td width=20% class=text-right>수량 변경:</td>\
+                          <td width=50% class=text-left>\
+                            <form action='/change.php' id = change>\
+                              <input type=number id=storage_id name=storage_id value="+value.room+" style=display:none;/>\
+                              <input type=number id=storage_id name=box value="+value.box+" style=display:none;/>\
+                              <input type=number id=id name=id value="+value.id+" style=display:none;/>\
+                              <input type=number id=number name=number min=0 max=100/>\
+                              <input type=submit value=변경 />\
+                            </form>\
+                          </td>");
+
+                      $("#dialog").dialog({ 
+                           autoOpen: true, 
+                           width: 400,
+                           height:600,
+                           modal: true
+                      });
+                      return true;
+                  }
+              })
+          });
+    }
+    </script>
+    <title>검색 결과</title>
+  </head>
+  
+  <body>
+    <!-- utility bar  -->
+    <div class="utility">
+      <input class="utility_button" type="image" value="home" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+      <div>
+      <input class="utility_button" type="image" value="add" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+      <input class="utility_button" type="image" value="search" img src="/images/icons/search.png" onclick="movepage_utility('search')" />
+    </div>
+      <input class="utility_button" type="image" value="back" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
+    </div>
+  
+  
+    <div class="container">
+      <!-- make web title  -->
+      <div>
+        <h4 class=text-center>.</h4>
+        <p style="font-size:4vmin;" class="text-center">검색 결과</p>
+        <!-- if there are no datas, show messages  -->
+        <style>
+          .no_data{
+            font-size:4vmin; 
+            position: absolute;
+            left: 50%;
+            font-weight: 300;
+            font-size: 4vmin;
+            color: rgb(187, 5, 5);
+            transform: translate(-50%, 10vmin);
+          }
+        </style>
+        <b class="no_data">There is No Searching Datas!</b>
+        <table class="table">
+          <tr id="mp"></tr>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <div id="dialog" title="물품 상세" style="display:none">
+          <table class="table">
+            <tr>
+              <td width="20%" class="text-center" colspan="2">
+                <img src=" " height=120vmin id="picture" onerror="this.src='/images/logos/logo_inverted.png';">
+              </td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">물품명:</td>
+              <td width=50% class="text-left" id="name"></td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">대분류:</td>
+              <td width=50% class="text-left" id="L_category"></td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">소분류:</td>
+              <td width=50% class="text-left" id="S_category"></td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">창고 위치:</td>
+              <td width=50% class="text-left" id="room"></td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">박스 위치:</td>
+              <td width=50% class="text-left" id="box"></td>
+            </tr>
+            <tr>
+              <td width=20% class="text-right">수량:</td>
+              <td width=50% class="text-left" id="count"></td>
+            </tr>
+            <tr id="edit_count">
+            </tr>
+            <tr>
+              <td colspan="3" valign="top" id="etc"></td>
+            </tr>
+          </table><br><br><br><br>
+          <div>
+            <!-- edit object data  -->
+          <label><물품 정보 수정></label>
+          <form action="/action_page.php"><!-- edit submit  -->
+            <label for="object_name">물품명:</label><br>
+            <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
+            <input type=number id=object_id name=object_id style=display:none;><br>
+            <label for="object_L_category">대분류:</label><br>
+            <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
+            <label for="object_S_category">소분류:</label><br>
+            <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
+            <label for="object_room">창고 위치:</label><br>
+            <select style="width: 30%;" id="object_room" name="object_room">
+                <option value="406">406호</option>
+                <option value="B05">창고1(B05)</option>
+                <option value="B09-3">창고2(B09-3)</option>
+            </select><br>
+            <label for="object_box">박스 위치(숫자):</label><br>
+            <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
+  
+            <label>소모품 여부:</label><br>
+                <input class="consumable" type="radio" id="no_consumables" name="consumables_check" value="no_consumables">
+                <label for="no_consumables">비소모품</label><br>
+                <input class="consumable" type="radio" id="consumables" name="consumables_check" value="consumables">
+                <label for="consumables">소모품</label><br><br>
+  
+            <div id="count_edit_input">
+            <label for="object_count">수량:</label><br>
+            <input style="width: 30%;" type="number" id="object_count" name="object_count" min="0" max="100">
+            </div><br><br>
+            <input type="submit" value="Submit">
+            
+          </form>
+          <script>
+            $(document).ready(function(){
+              $('input[type="radio"][class="consumable"]').on('click',function(){
+                  var show_edit = $('input[type=radio][class="consumable"]:checked').val();
+                 if(show_edit == 'no_consumables'){
+                      $('#count_edit_input').css('display','flex');
+                  }else{
+                      $('#count_edit_input').css('display','none');
+                  }
+              });
+          });
+          </script>
+        </div>
+        </div>
+     </div>
+    </div>
+  
+    <!-- object add pop up window  -->
+    <div class="container">
+      <div class="col-sm-6">
+        <div id="add" title="물품 추가" style="display:none">
+          <!-- send object datas  -->
+        <form action="/action_page.php">
+          <label for="object_name">물품명:</label><br>
+          <input style="width: 70%;" type="text" id="new_defalut_name" name="new_defalut_name"><br>
+          <input type=number id=new_defalut_id name=new_defalut_id style=display:none;><br>
+          <label for="object_L_category">대분류:</label><br>
+          <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br>
+          <label for="object_S_category">소분류:</label><br>
+          <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br>
+          <label for="object_room">창고 위치:</label><br>
+          <select style="width: 30%;" id="object_room" name="object_room">
+              <option value="406">406호</option>
+              <option value="B05">창고1(B05)</option>
+              <option value="B09-3">창고2(B09-3)</option>
+          </select><br>
+          <label for="object_box">박스 위치(숫자):</label><br>
+          <input style="width: 30%;" type="number" id="new_defalut_box" name="new_defalut_box"><br>
+
+          <label>소모품 여부:</label><br>
+              <input class="consumable" type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
+              <label for="no_consumables">비소모품</label><br>
+              <input class="consumable" type="radio" id="consumables" name="consumables_check" value="consumables">
+              <label for="consumables">소모품</label><br><br>
+
+          <div id="count_edit_input">
+          <label for="object_count">수량:</label><br>
+          <input style="width: 30%;" type="number" id="object_count" name="object_count" value="0" min="0" max="100">
+          </div><br><br>
+          <input type="submit" value="Submit">
+        </form> 
+        <script>
+          $(document).ready(function(){
+            $('input[type="radio"][class="consumable"]').on('click',function(){
+                var show_edit = $('input[type=radio][class="consumable"]:checked').val();
+               if(show_edit == 'no_consumables'){
+                    $('#count_edit_input').css('display','flex');
+                }else{
+                    $('#count_edit_input').css('display','none');
+                }
+            });
+        });
+        </script>
+        </div>
+     </div>
+    </div>
+
+    <!-- advanced searching pop up window  -->
+    <div class="container">
+      <div class="col-sm-6">
+        <div id="searching" title="물품 상세 검색" style="display:none">
+          <!-- send object datas  -->
+        <form action="/search">
+            <label for="object_name">물품명:</label><br>
+            <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
+            <label for="object_L_category">대분류:</label><br>
+            <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
+            <label for="object_S_category">소분류:</label><br>
+            <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
+            <label for="object_room">창고 위치:</label><br>
+            <select style="width: 30%;" id="object_room" name="object_room">
+                <option value="">---</option>
+                <option value="406">406호</option>
+                <option value="B05">창고1(B05)</option>
+                <option value="B09-3">창고2(B09-3)</option>
+            </select><br>
+            <label for="object_box">박스 위치(숫자):</label><br>
+            <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
+  
+            <label>소모품 여부:</label><br>
+                <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
+                <label for="no_consumables">비소모품</label><br>
+                <input type="radio" id="consumables" name="consumables_check" value="consumables">
+                <label for="consumables">소모품</label><br><br>
+            <input type="submit" value="Submit">
+          </form> 
+          </div>
+       </div>
+      </div>
+  
+    <script>
+      function movepage_utility(target) {
+                if(target=="home"){
+                    location.href = "/";
+                }
+                else if(target=="back"){
+                    history.back();
+                }
+                //make popup window
+                else if(target=="add"){
+                    $("#add").dialog({ 
+                        autoOpen: true, 
+                        width: 400,
+                        height:600,
+                        modal: true
+                    });
+                    return true;
+                }
+                else if(target=="search"){
+                      $("#searching").dialog({ 
+                          autoOpen: true, 
+                          width: 400,
+                          height:600,
+                          modal: true
+                      });
+                      return true;
+                  }
+            }
+    </script>
+  </body>
+  </html>
+  
