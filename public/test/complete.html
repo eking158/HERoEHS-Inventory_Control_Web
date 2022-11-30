@@ -16,7 +16,15 @@
                 location.href = "/" + storage_id + "/" + box_id;
             }
             else if(req_type == 'action_page.php'){
-                location.href = "/"
+                //var storage_id = s.split('/')[3].split('object_room=')[1].split('&')[0];
+                var storage_id = s.split('/')[3].split("?")[1].split("&");
+                var i = 1;
+                var url = "search" + "?" + storage_id[0];
+                while(i++<storage_id.length-2){
+                    url = url + "&" + storage_id[i];
+                }
+                location.href = "/" + url;
+                //document.writeln(url);      
             }
         </script>
     </head>
