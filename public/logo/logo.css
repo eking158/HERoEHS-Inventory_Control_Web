@@ -1,5 +1,5 @@
 .logo {
-    width: 80vmin;
+    width: 90vmin;
     height: 12vmin;
     border: 0px solid #1b5bc200;
     background: #ffffff00;
@@ -16,7 +16,14 @@
     outline: none;
     float: left;
     filter: invert(100%);
+}
 
+.logo_logo_arobot{
+    width: 10vmin;
+    height: 10vmin;
+    position: relative;
+    outline: none;
+    float: left;
 }
 
 

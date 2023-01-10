@@ -16,7 +16,7 @@
 
 /* 406 */
 .storage_406_button{
-    width: 33.3%;
+    width: 25%;
     right: 0px;
     top: 0px;
     position: relative;
@@ -34,7 +34,7 @@
 
 /* B05 */
 .B05_button{
-    width: 33.3%;
+    width: 25%;
     right: 0px;
     top: 0px;
     position: relative;
@@ -52,7 +52,7 @@
 
 /* B09-3 */
 .B09-3_button{
-    width: 33.3%;
+    width: 25%;
     right: 0px;
     top: 0px;
     position: relative;
@@ -64,6 +64,23 @@
     border-radius: 35px;
 }
 .B09-3_button::after {
+    padding-bottom: 100%;
+  }
+
+/* 527 */
+.storage_527_button{
+    width: 25%;
+    right: 0px;
+    top: 0px;
+    position: relative;
+    border: var(--storage_border_size) solid var(--storage_border_color);
+    background: var(--storage_background_color);
+    outline: none;
+    float: left;
+    color: #ffffff;
+    border-radius: 35px;
+}
+.storage_527_button::after {
     padding-bottom: 100%;
   }
 

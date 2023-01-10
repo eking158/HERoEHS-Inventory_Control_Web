@@ -38,28 +38,21 @@
         });
     </script>
     <!-- utility bar  -->
-    <div class="utility">
-        <input class="utility_button" type="image" value="home" img src="/images/icons/home.png"
-            onclick="movepage_utility('home')" />
-        <div>
-            <input class="utility_button" type="image" value="add" img src="/images/icons/add.png"
-                onclick="movepage_utility('add')" />
-            <input class="utility_button" type="image" value="search" img src="/images/icons/search.png"
-                onclick="movepage_utility('search')" />
-        </div>
-        <div style="width: 8vmin;">
+    <div style="width: 16vw;" class="utility">
+        <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
+        <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
         <form id="database">
-            <input class="utility_data" type="image" value="submoy" img src="/images/icons/database.png"/>
+            <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
         </form>
-        <input class="utility_button" type="image" value="back" img src="/images/icons/back.png"
-            onclick="movepage_utility('back')" />
-        </div>
+        <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+        <input class="utility_button" type="image" value="search" img src="/images/icons/search.png" onclick="movepage_utility('search')" />
     </div>
 
     <!-- logo  -->
     <div class="logo">
         <img class="logo_logo" src="images/logos/logo.png">
         <img class="logo_title" src="images/logos/title.png">
+        <img class="logo_logo_arobot" src="images/logos/logo_arobot.png">
     </div>
 
     <!-- searching bar (with animation)  -->
@@ -89,6 +82,9 @@
         <input class="B09-3_button" type="image" img src="images/buttons/B09-3.png"
             onmouseover="this.src='images/buttons/B09-3_picture.png';" onmouseout="this.src='images/buttons/B09-3.png';"
             value="storage 2" onclick="movepage_s2()" />
+        <input class="storage_527_button" type="image" img src="images/buttons/527.png"
+            onmouseover="this.src='images/buttons/527_picture.png';" onmouseout="this.src='images/buttons/527.png';"
+            value="527" onclick="movepage_527()" />
     </div>
 
     <!-- object add pop up window  -->
@@ -187,6 +183,9 @@
         }
         function movepage_s2() {
             location.href = "/B09-3";
+        }
+        function movepage_527() {
+            location.href = "/527/0";
         }
         function movepage_utility(target) {
             if (target == "home") {

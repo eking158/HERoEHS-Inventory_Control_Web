@@ -74,13 +74,14 @@ app.get('/', function(req,res) {
 app.get('/406', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
   })
-
 app.get('/B05', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
   })
-
 app.get('/B09-3', function(req,res){
     res.sendFile(__dirname + "/public/storages/storages.html");
+})
+app.get('/527', function(req,res){
+  res.sendFile(__dirname + "/public/storages/storages.html");
 })
 
 app.get('/406/:id', function(req,res){
@@ -90,6 +91,9 @@ app.get('/B05/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
 app.get('/B09-3/:id', function(req,res){
+  res.sendFile(__dirname + "/public/test/inventory.html");
+})
+app.get('/527/:id', function(req,res){
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
 
