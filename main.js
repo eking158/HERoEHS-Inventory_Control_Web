@@ -58,6 +58,7 @@ sequelize.sync({ force: false })
   });
 
 app.use(morgan('dev'));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -70,25 +71,32 @@ app.get('/searching_database', function (req, res) {
 })
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(session({
-  secret: '~~~',	// 원하는 문자 입력
   resave: false,
   saveUninitialized: true,
-  store: new FileStore(),
-}))
+  secret: 'inventory',	// 원하는 문자 입력
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  },
+  //store: new FileStore(),
+}));
 
 app.get('/', (req, res) => {
   if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
     res.redirect('/auth/login');
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
-    var html = template.HTML('Welcome',
-      `<hr>
-          <h2>메인 페이지에 오신 것을 환영합니다</h2>
-          <p>로그인에 성공하셨습니다.</p>`,
-      authCheck.statusUI(req, res)
-    );
-    res.send(html);
+    // var html = template.HTML('Welcome',
+    //   `<hr>
+    //       <h2>메인 페이지에 오신 것을 환영합니다</h2>
+    //       <p>로그인에 성공하셨습니다.</p>`,
+    //   authCheck.statusUI(req, res)
+    // );
+    // res.send(html);
+    res.sendFile(__dirname + "/public/sequelize.html");
+    return false;
   }
 })
 
