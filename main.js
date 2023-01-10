@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const xlsx = require('xlsx');
 const nunjucks = require('nunjucks');
 const session = require('express-session')
-const FileStore = require('session-file-store')(session)
+// const FileStore = require('session-file-store')(session)
 
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
@@ -58,7 +58,6 @@ sequelize.sync({ force: false })
   });
 
 app.use(morgan('dev'));
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -102,11 +101,6 @@ app.get('/', (req, res) => {
 
 // 인증 라우터
 app.use('/auth', authRouter);
-
-// app.get('/', function(req,res) {
-//     //let dataJSON = load_json(req,res);
-//     res.sendFile(__dirname + "/public/sequelize.html");
-// })
 
 // localhost:3000/main 브라우저에 res.sendFile() 내부의 파일이 띄워진다.
 app.get('/406', function (req, res) {

@@ -23,18 +23,18 @@
 
 <body>
     <script>
-        $( function() {
-        //$( "#dialog" ).dialog();
-        $( "#tabs" ).tabs();
-        $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
-            $.each(data["datas"],function(index,value){
-            $('input[name=new_defalut_id]').attr('value',data["datas"].length);
-            $('input[name=new_defalut_name]').attr('value','-');
-            $('input[name=new_defalut_box]').attr('value',0);
-            $('input[name=new_defalut_L_category]').attr('value','-');
-            $('input[name=new_defalut_S_category]').attr('value','-');
+        $(function () {
+            //$( "#dialog" ).dialog();
+            $("#tabs").tabs();
+            $.getJSON("/test/inventory.json", function (data) { //json 파일 경로 수정 필요
+                $.each(data["datas"], function (index, value) {
+                    $('input[name=new_defalut_id]').attr('value', data["datas"].length);
+                    $('input[name=new_defalut_name]').attr('value', '-');
+                    $('input[name=new_defalut_box]').attr('value', 0);
+                    $('input[name=new_defalut_L_category]').attr('value', '-');
+                    $('input[name=new_defalut_S_category]').attr('value', '-');
+                })
             })
-        })
         });
     </script>
     <!-- utility bar  -->
@@ -48,13 +48,19 @@
                 onclick="movepage_utility('search')" />
         </div>
         <div style="width: 8vmin;">
-        <form id="database">
-            <input class="utility_data" type="image" value="submoy" img src="/images/icons/database.png"/>
-        </form>
-        <input class="utility_button" type="image" value="back" img src="/images/icons/back.png"
-            onclick="movepage_utility('back')" />
+            <form id="database">
+                <input class="utility_data" type="image" value="submoy" img src="/images/icons/database.png" />
+            </form>
+            <input class="utility_button" type="image" value="back" img src="/images/icons/back.png"
+                onclick="movepage_utility('back')" />
         </div>
+        <!-- logout button -->
+        <form id="logout">
+            <input type="button" value="logout" onclick="movepage_logout()" />
+        </form>
     </div>
+
+
 
     <!-- logo  -->
     <div class="logo">
@@ -101,9 +107,11 @@
                     <input style="width: 70%;" type="text" id="new_defalut_name" name="new_defalut_name"><br>
                     <input type=number id=new_defalut_id name=new_defalut_id style=display:none;><br>
                     <label for="object_L_category">대분류:</label><br>
-                    <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br>
+                    <input style="width: 70%;" type="text" id="new_defalut_L_category"
+                        name="new_defalut_L_category"><br>
                     <label for="object_S_category">소분류:</label><br>
-                    <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br>
+                    <input style="width: 70%;" type="text" id="new_defalut_S_category"
+                        name="new_defalut_S_category"><br>
                     <label for="object_room">창고 위치:</label><br>
                     <select style="width: 30%;" id="object_room" name="object_room">
                         <option value="406">406호</option>
@@ -187,6 +195,9 @@
         }
         function movepage_s2() {
             location.href = "/B09-3";
+        }
+        function movepage_logout() {
+            location.href = "/auth/logout";
         }
         function movepage_utility(target) {
             if (target == "home") {
