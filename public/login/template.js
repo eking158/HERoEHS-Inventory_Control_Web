@@ -4,14 +4,14 @@ module.exports = {
       <!doctype html>
       <html>
       <head>    
-        <title>Login TEST - ${title}</title>
+        <title>재고관리 사이트- ${title}</title>
         <meta charset="utf-8">
         <style>
           @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
   
           body {
               font-family: 'Noto Sans KR', sans-serif;
-              background-color: #AAA2C2;
+              background-color: #C5E1A5;
               margin: 50px;
   
           }
@@ -47,13 +47,13 @@ module.exports = {
           .login:focus,
           .login:hover {
               outline: none;
-              border-bottom-color: #6A679E;
+              border-bottom-color: #7CB342;
           }
   
           .btn {            
               border: none;
               width: 75%;
-              background-color: #6A679E;
+              background-color: #7CB342;
               color: white;
               padding: 15px 0;
               font-weight: 600;
@@ -62,7 +62,7 @@ module.exports = {
               transition: .2s;
           }
           .btn:hover {
-              background-color: #595787;
+              background-color: #558B2F;
           }
       </style>
       </head>
