@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="searching_bar/searching_bar_advanced.css" />
+    <link rel="stylesheet" href="searching_bar/searching_bar.css" />
     <link rel="stylesheet" href="storages/css/storages.css" />
     <link rel="stylesheet" href="logo/logo.css" />
     <link rel="stylesheet" href="buttons/utility_button.css" />
@@ -45,7 +45,6 @@
             <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
         </form>
         <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
-        <input class="utility_button" type="image" value="search" img src="/images/icons/search.png" onclick="movepage_utility('search')" />
     </div>
 
     <!-- logo  -->
@@ -56,19 +55,50 @@
     </div>
 
     <!-- searching bar (with animation)  -->
-    <div class="searching_bar_ad">
+    <div class="searching_bar_main">
         <form action="/search">
-            <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name"
-                placeholder="검색어를 입력해 주세요">
-            <input type="text" id="object_L_category" name="object_L_category" style=display:none; value="">
-            <input type="text" id="object_S_category" name="object_S_category" style=display:none; value="">
-            <input type="text" id="object_room" name="object_room" style=display:none; value="">
-            <input type="number" id="object_box" name="object_box" style=display:none; value="">
-            <input type="text" id="consumables_check" name="consumables_check" style=display:none; value="">
-            <button class="searching_bar_button_ad" type="submit">
-                <i style="font-size: 2vmin" class="fas fa-search"></i>
-            </button>
-        </form>
+            <div class="searching_bar_name">
+                <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name">
+                <button class="searching_bar_button_ad" type="submit">
+                    <i style="font-size: 2vmin" class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="searching_bar_etc_box">
+                <div>
+                    <label class="searching_bar_text" for="object_L_category">대분류:</label>
+                    <input class="searching_bar_etc_text_box" type="text" id="object_L_category" name="object_L_category">
+                </div>
+                <div>
+                    <label class="searching_bar_text" for="object_S_category">소분류:</label>
+                    <input class="searching_bar_etc_text_box" type="text" id="object_S_category" name="object_S_category">
+                </div>
+            </div>
+            <div class="searching_bar_etc_box">
+                <div>
+                    <label class="searching_bar_text" for="object_room">창고 위치:</label>
+                    <select class="searching_bar_etc_select_box" id="object_room" name="object_room">
+                        <option value="">모든 창고</option>
+                        <option value="406">406호</option>
+                        <option value="B05">창고1(B05)</option>
+                        <option value="B09-3">창고2(B09-3)</option>
+                        <option value="527">527호</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="searching_bar_text" for="object_box">박스 위치(숫자):</label>
+                    <input class="searching_bar_etc_text_box" type="number" id="object_box" name="object_box">
+                </div>
+            </div>
+            <div class="searching_bar_etc_box">
+                <div>
+                    <label class="searching_bar_text" >소모품 여부:</label>
+                    <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
+                    <label class="searching_bar_text" for="no_consumables">비소모품</label>
+                    <input type="radio" id="consumables" name="consumables_check" value="consumables">
+                    <label class="searching_bar_text" for="consumables">소모품</label>
+                </div>
+            </div>
+          </form> 
     </div>
 
     <!-- select storages button  -->
@@ -140,40 +170,6 @@
         </div>
     </div>
 
-    <!-- advanced searching pop up window  -->
-    <div class="container">
-        <div class="col-sm-6">
-            <div id="searching" title="물품 상세 검색" style="display:none">
-                <!-- send object datas  -->
-                <form action="/search">
-                    <label for="object_name">물품명:</label><br>
-                    <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
-                    <label for="object_L_category">대분류:</label><br>
-                    <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
-                    <label for="object_S_category">소분류:</label><br>
-                    <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
-                    <label for="object_room">창고 위치:</label><br>
-                    <select style="width: 30%;" id="object_room" name="object_room">
-                        <option value="">---</option>
-                        <option value="406">406호</option>
-                        <option value="B05">창고1(B05)</option>
-                        <option value="B09-3">창고2(B09-3)</option>
-                    </select><br>
-                    <label for="object_box">박스 위치(숫자):</label><br>
-                    <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
-
-                    <label>소모품 여부:</label><br>
-                      <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables"
-                        checked="checked">
-                      <label for="no_consumables">비소모품</label><br>
-                      <input type="radio" id="consumables" name="consumables_check" value="consumables">
-                      <label for="consumables">소모품</label><br><br>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </div>
-    </div>
-
     <script>
         function movepage_406() {
             location.href = "/406";
@@ -197,15 +193,6 @@
             //make popup window
             else if (target == "add") {
                 $("#dialog").dialog({
-                    autoOpen: true,
-                    width: 400,
-                    height: 600,
-                    modal: true
-                });
-                return true;
-            }
-            else if (target == "search") {
-                $("#searching").dialog({
                     autoOpen: true,
                     width: 400,
                     height: 600,

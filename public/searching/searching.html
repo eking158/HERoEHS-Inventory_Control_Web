@@ -6,9 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/test/css/list_box.css" />
   <link rel="stylesheet" href="/buttons/utility_button.css" />
+  <link rel="stylesheet" href="searching_bar/searching_bar_2.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -127,14 +131,94 @@
   
   <body>
     <!-- utility bar  -->
-    <div class="utility">
-      <input class="utility_button" type="image" value="home" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
-      <div>
-      <input class="utility_button" type="image" value="add" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
-      <input class="utility_button" type="image" value="search" img src="/images/icons/search.png" onclick="movepage_utility('search')" />
-    </div>
-      <input class="utility_button" type="image" value="back" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
-    </div>
+    <div style="width: 16vw;" class="utility">
+      <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
+      <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+      <form id="database">
+          <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
+      </form>
+      <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+  </div>
+
+  <!-- searching bar (with animation)  -->
+  <div class="searching_bar_main" style="transform: translate(-50%, 5vmin);">
+    <form action="/search">
+        <div class="searching_bar_name">
+            <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name">
+            <button class="searching_bar_button_ad" type="submit">
+                <i style="font-size: 2vmin" class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="searching_bar_etc_box">
+            <div>
+                <label class="searching_bar_text" for="object_L_category">대분류:</label>
+                <script type="text/javascript">
+                  document.write("<input class=searching_bar_etc_text_box type=text id=object_L_category name=object_L_category value="+object_L_category+">");
+                </script>
+            </div>
+            <div>
+                <label class="searching_bar_text" for="object_S_category">소분류:</label>
+                <script type="text/javascript">
+                  document.write("<input class=searching_bar_etc_text_box type=text id=object_S_category name=object_S_category value="+object_S_category+">");
+                </script>
+            </div>
+        </div>
+        <div class="searching_bar_etc_box">
+            <div>
+                <label class="searching_bar_text" for="object_room">창고 위치:</label>
+                <select class="searching_bar_etc_select_box" id="object_room" name="object_room">
+                  <script type="text/javascript">
+                    if(object_room == "406")
+                      document.write("<option value= >모든 창고</option>\
+                                      <option selected=selected value=406>406호</option>\
+                                      <option value=B05>창고1(B05)</option>\
+                                      <option value=B09-3>창고2(B09-3)</option>\
+                                      <option value=527>527호</option>");
+                    if(object_room == "B05")
+                      document.write("<option value= >모든 창고</option>\
+                                      <option value=406>406호</option>\
+                                      <option selected=selected value=B05>창고1(B05)</option>\
+                                      <option value=B09-3>창고2(B09-3)</option>\
+                                      <option value=527>527호</option>");
+                    if(object_room == "B09-3")
+                      document.write("<option value= >모든 창고</option>\
+                                      <option value=406>406호</option>\
+                                      <option value=B05>창고1(B05)</option>\
+                                      <option selected=selected value=B09-3>창고2(B09-3)</option>\
+                                      <option value=527>527호</option>");
+                    if(object_room == "527")
+                      document.write("<option value= >모든 창고</option>\
+                                      <option value=406>406호</option>\
+                                      <option value=B05>창고1(B05)</option>\
+                                      <option selected=selected value=B09-3>창고2(B09-3)</option>\
+                                      <option value=527>527호</option>");
+                    if(object_room == "")
+                      document.write("<option selected=selected value= >모든 창고</option>\
+                                      <option value=406>406호</option>\
+                                      <option value=B05>창고1(B05)</option>\
+                                      <option value=B09-3>창고2(B09-3)</option>\
+                                      <option value=527>527호</option>");
+                  </script>
+                </select>
+            </div>
+            <div>
+                <label class="searching_bar_text" for="object_box">박스 위치(숫자):</label>
+                <script type="text/javascript">
+                  document.write("<input class=searching_bar_etc_text_box type=number id=object_box name=object_box value="+object_box+">");
+                </script>
+            </div>
+        </div>
+        <div class="searching_bar_etc_box">
+            <div>
+                <label class="searching_bar_text" >소모품 여부:</label>
+                  <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
+                  <label class="searching_bar_text" for="no_consumables">비소모품</label>
+                  <input type="radio" id="consumables" name="consumables_check" value="consumables">
+                  <label class="searching_bar_text" for="consumables">소모품</label>
+            </div>
+        </div>
+      </form> 
+</div><br><br>
   
   
     <div class="container">
@@ -296,39 +380,6 @@
         </div>
      </div>
     </div>
-
-    <!-- advanced searching pop up window  -->
-    <div class="container">
-      <div class="col-sm-6">
-        <div id="searching" title="물품 상세 검색" style="display:none">
-          <!-- send object datas  -->
-        <form action="/search">
-            <label for="object_name">물품명:</label><br>
-            <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
-            <label for="object_L_category">대분류:</label><br>
-            <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
-            <label for="object_S_category">소분류:</label><br>
-            <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
-            <label for="object_room">창고 위치:</label><br>
-            <select style="width: 30%;" id="object_room" name="object_room">
-                <option value="">---</option>
-                <option value="406">406호</option>
-                <option value="B05">창고1(B05)</option>
-                <option value="B09-3">창고2(B09-3)</option>
-            </select><br>
-            <label for="object_box">박스 위치(숫자):</label><br>
-            <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
-  
-            <label>소모품 여부:</label><br>
-                <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
-                <label for="no_consumables">비소모품</label><br>
-                <input type="radio" id="consumables" name="consumables_check" value="consumables">
-                <label for="consumables">소모품</label><br><br>
-            <input type="submit" value="Submit">
-          </form> 
-          </div>
-       </div>
-      </div>
   
     <script>
       function movepage_utility(target) {
@@ -348,15 +399,6 @@
                     });
                     return true;
                 }
-                else if(target=="search"){
-                      $("#searching").dialog({ 
-                          autoOpen: true, 
-                          width: 400,
-                          height:600,
-                          modal: true
-                      });
-                      return true;
-                  }
             }
     </script>
   </body>
