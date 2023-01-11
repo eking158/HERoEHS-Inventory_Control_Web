@@ -60,7 +60,7 @@
                 <table class=list_box_table height=100%>\
                 <tr>\
                     <td width=20% rowspan=2>\
-                      <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/logo.png';>\
+                      <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/no_picture.png';>\
                     </td>\
                     <td width=28%>물품명: " +value.name+"</td>\
                     <td width=15%>창고 위치: " +value.room+"</td>\
@@ -131,12 +131,9 @@
   
   <body>
     <!-- utility bar  -->
-    <div style="width: 16vw;" class="utility">
+    <div class="utility">
       <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
       <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
-      <form id="database">
-          <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
-      </form>
       <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
   </div>
 

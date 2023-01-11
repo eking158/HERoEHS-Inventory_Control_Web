@@ -48,12 +48,9 @@
         });
     </script>
     <!-- utility bar  -->
-    <div style="width: 16vw;" class="utility">
+    <div class="utility">
         <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
         <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
-        <form id="database">
-            <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
-        </form>
         <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
     </div>
 
@@ -87,11 +84,32 @@
                 <div>
                     <label class="searching_bar_text" for="object_room">창고 위치:</label>
                     <select class="searching_bar_etc_select_box" id="object_room" name="object_room">
-                        <option value="">모든 창고</option>
-                        <option value="406">406호</option>
-                        <option value="B05">창고1(B05)</option>
-                        <option value="B09-3">창고2(B09-3)</option>
-                        <option value="527">527호</option>
+                        <script type="text/javascript">
+                            if(storage_id == "406")
+                              document.write("<option value= >모든 창고</option>\
+                                              <option selected=selected value=406>406호</option>\
+                                              <option value=B05>창고1(B05)</option>\
+                                              <option value=B09-3>창고2(B09-3)</option>\
+                                              <option value=527>527호</option>");
+                            if(storage_id == "B05")
+                              document.write("<option value= >모든 창고</option>\
+                                              <option value=406>406호</option>\
+                                              <option selected=selected value=B05>창고1(B05)</option>\
+                                              <option value=B09-3>창고2(B09-3)</option>\
+                                              <option value=527>527호</option>");
+                            if(storage_id == "B09-3")
+                              document.write("<option value= >모든 창고</option>\
+                                              <option value=406>406호</option>\
+                                              <option value=B05>창고1(B05)</option>\
+                                              <option selected=selected value=B09-3>창고2(B09-3)</option>\
+                                              <option value=527>527호</option>");
+                            if(storage_id == "527")
+                              document.write("<option value= >모든 창고</option>\
+                                              <option value=406>406호</option>\
+                                              <option value=B05>창고1(B05)</option>\
+                                              <option selected=selected value=B09-3>창고2(B09-3)</option>\
+                                              <option value=527>527호</option>");
+                          </script>
                     </select>
                 </div>
                 <div>
