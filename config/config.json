@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Robot1234!",
+    "username": "dbmasteruser",
+    "password": "useiteasier",
     "database": "inventoryDB",
-    "host": "127.0.0.1",
+    "host": "ls-44241f46297a5960bd783ef5c23f57ed8a10e7c3.cqzmsctc2nun.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
