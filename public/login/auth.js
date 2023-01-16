@@ -21,6 +21,8 @@ router.get('/login', function (request, response) {
 
 // 로그인 프로세스
 router.post('/login_process', function (request, response) {
+    console.log(request.body);
+    const username = {};
     const userid = request.body.userid;
     const password = request.body.pwd;
     if (userid && password) {             // id와 pw가 입력되었는지 확인

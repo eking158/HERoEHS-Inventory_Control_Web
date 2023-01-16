@@ -31,7 +31,17 @@ function save_json(dataJSON) {
 }
 
 function log_json(logJSON) {
-  const log = JSON.stringify(logJSON) + "\n";
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+  const today = year + '-' + month  + '-' + day;
+  const presentTime = hours + ':' + minutes  + ':' + seconds;
+
+  const log = logJSON + " " + today + " " + presentTime + "\n";
   fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
 }
 
@@ -96,7 +106,8 @@ app.get('/', (req, res) => {
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
     res.sendFile(__dirname + "/public/sequelize.html");
-    const s = new Date();
+    const s = req.session.nickname;
+    console.log(req.session);
     log_json(s);
     return false;
   }
