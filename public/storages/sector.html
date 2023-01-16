@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="searching_bar/searching_bar.css" />
     <link rel="stylesheet" href="logo/logo.css" />
     <link rel="stylesheet" href="/buttons/406_sector_button.css" />
+    <link rel="stylesheet" href="/buttons/B05_sector_button.css" />
     <link rel="stylesheet" href="/buttons/box_button.css" />
     <link rel="stylesheet" href="/storages/css/storages.css" />
     <link rel="stylesheet" href="buttons/utility_button.css" />
@@ -145,15 +146,15 @@
         //각 창고별 박스 수량 지정
         if(storage_id == "B05"){
             document.write("\
-            <div class=sector_main_406>\
-                <div class=sector_406>\
-                    <input class=sector_406_1 type=image img src=/images/sector/406/sector_1.png onclick=movepage_sector(1) />\
-                    <input class=sector_406_2 type=image img src=/images/sector/406/sector_2.png onclick=movepage_sector(2) />\
-                    <input class=sector_406_3 type=image img src=/images/sector/406/sector_3.png onclick=movepage_sector(3) />\
-                    <input class=sector_406_4 type=image img src=/images/sector/406/sector_4.png onclick=movepage_sector(4) />\
-                    <input class=sector_406_5 type=image img src=/images/sector/406/sector_5.png onclick=movepage_sector(5) />\
-                    <input class=sector_406_6 type=image img src=/images/sector/406/sector_6.png onclick=movepage_sector(6) />\
-                    <input class=sector_406_7 type=image img src=/images/sector/406/sector_7.png onclick=movepage_sector(7) />\
+            <div class=sector_main_B05>\
+                <div class=sector_B05>\
+                    <input class=sector_B05_1 type=image img src=/images/sector/B05/sector_1.png onclick=movepage_sector(1) title=구역:1(바닥) />\
+                    <input class=sector_B05_2 type=image img src=/images/sector/B05/sector_2.png onclick=movepage_sector(2) title=구역:2 />\
+                    <input class=sector_B05_3 type=image img src=/images/sector/B05/sector_3.png onclick=movepage_sector(3) title=구역:3 />\
+                    <input class=sector_B05_4 type=image img src=/images/sector/B05/sector_4.png onclick=movepage_sector(4) title=구역:4 />\
+                    <input class=sector_B05_5 type=image img src=/images/sector/B05/sector_5.png onclick=movepage_sector(5) title=구역:5 />\
+                    <input class=sector_B05_6 type=image img src=/images/sector/B05/sector_6.png onclick=movepage_sector(6) title=구역:6 />\
+                    <input class=sector_B05_7 type=image img src=/images/sector/B05/sector_7.png onclick=movepage_sector(7) title=구역:7 />\
                 </div>\
             </div>\
             ");
@@ -162,13 +163,13 @@
             document.write("\
             <div class=sector_main_406>\
                 <div class=sector_406>\
-                    <input class=sector_406_1 type=image img src=/images/sector/406/sector_1.png onclick=movepage_sector(1) />\
-                    <input class=sector_406_2 type=image img src=/images/sector/406/sector_2.png onclick=movepage_sector(2) />\
-                    <input class=sector_406_3 type=image img src=/images/sector/406/sector_3.png onclick=movepage_sector(3) />\
-                    <input class=sector_406_4 type=image img src=/images/sector/406/sector_4.png onclick=movepage_sector(4) />\
-                    <input class=sector_406_5 type=image img src=/images/sector/406/sector_5.png onclick=movepage_sector(5) />\
-                    <input class=sector_406_6 type=image img src=/images/sector/406/sector_6.png onclick=movepage_sector(6) />\
-                    <input class=sector_406_7 type=image img src=/images/sector/406/sector_7.png onclick=movepage_sector(7) />\
+                    <input class=sector_406_1 type=image img src=/images/sector/406/sector_1.png onclick=movepage_sector(1) title=구역:1 />\
+                    <input class=sector_406_2 type=image img src=/images/sector/406/sector_2.png onclick=movepage_sector(2) title=구역:2 />\
+                    <input class=sector_406_3 type=image img src=/images/sector/406/sector_3.png onclick=movepage_sector(3) title=구역:3 />\
+                    <input class=sector_406_4 type=image img src=/images/sector/406/sector_4.png onclick=movepage_sector(4) title=구역:4 />\
+                    <input class=sector_406_5 type=image img src=/images/sector/406/sector_5.png onclick=movepage_sector(5) title=구역:5 />\
+                    <input class=sector_406_6 type=image img src=/images/sector/406/sector_6.png onclick=movepage_sector(6) title=구역:6 />\
+                    <input class=sector_406_7 type=image img src=/images/sector/406/sector_7.png onclick=movepage_sector(7) title=구역:7 />\
                 </div>\
             </div>\
             ");
@@ -244,7 +245,12 @@
                 }
             }
         function movepage_sector(sector_id) {
-            location.href = storage_id+"/"+ String(sector_id);
+            if(storage_id=="B05" && sector_id == 1){
+                location.href = storage_id+"/"+ String(sector_id)+"/"+String(0);
+            }
+            else{
+                location.href = storage_id+"/"+ String(sector_id);
+            }
         }
     </script>
 </body>

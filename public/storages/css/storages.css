@@ -1,22 +1,24 @@
 :root {
+    --main_div_width: 98vmin;
+    --button_width: calc((var(--main_div_width) - var(--storage_border_size) * 12)/4);
     --storage_border_color: #050505;
-    --storage_border_size: 0vmin;
+    --storage_border_size: 1vmin;
     --storage_background_color: #050505;
   }
 
 .storages {
-    width: 98vmin;
+    width: var(--main_div_width);
     border: 3px solid #1b5bc200;
     background: #14449100;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 24vmin);
+    transform: translate(-50%, 28vmin);
 }
 
 
 /* 406 */
 .storage_406_button{
-    width: 25%;
+    width: var(--button_width);
     right: 0px;
     top: 0px;
     position: relative;
@@ -34,7 +36,7 @@
 
 /* B05 */
 .B05_button{
-    width: 25%;
+    width: var(--button_width);
     right: 0px;
     top: 0px;
     position: relative;
@@ -52,7 +54,7 @@
 
 /* B09-3 */
 .B09-3_button{
-    width: 25%;
+    width: var(--button_width);
     right: 0px;
     top: 0px;
     position: relative;
@@ -69,7 +71,7 @@
 
 /* 527 */
 .storage_527_button{
-    width: 25%;
+    width: var(--button_width);
     right: 0px;
     top: 0px;
     position: relative;
@@ -87,7 +89,7 @@
 
 /* title */
 .title {
-    width: 40vmin;
+    width: 50vmin;
     height: 6vmin;
     background: none;
     border: none;
