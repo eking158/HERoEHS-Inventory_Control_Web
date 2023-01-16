@@ -14,6 +14,7 @@ const itemsRouter = require('./routes/items');
 const authRouter = require('./public/login/auth');
 const authCheck = require('./public/login/authCheck.js');
 const template = require('./public/login/template.js');
+const { DATE } = require('sequelize');
 
 const app = express();
 
@@ -28,6 +29,13 @@ function save_json(dataJSON) {
   const bookJSON = JSON.stringify(dataJSON)
   fs.writeFileSync(path.join(__dirname, 'public/test/inventory.json'), bookJSON);
 }
+
+function log_json(logJSON) {
+  const log = JSON.stringify(logJSON) + "\n";
+  fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
+}
+
+
 
 function save_excel(dataJSON) {
   const sheetnames = Object.keys(dataJSON);
@@ -87,14 +95,9 @@ app.get('/', (req, res) => {
     res.redirect('/auth/login');
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
-    // var html = template.HTML('Welcome',
-    //   `<hr>
-    //       <h2>메인 페이지에 오신 것을 환영합니다</h2>
-    //       <p>로그인에 성공하셨습니다.</p>`,
-    //   authCheck.statusUI(req, res)
-    // );
-    // res.send(html);
     res.sendFile(__dirname + "/public/sequelize.html");
+    const s = new Date();
+    log_json(s);
     return false;
   }
 })
