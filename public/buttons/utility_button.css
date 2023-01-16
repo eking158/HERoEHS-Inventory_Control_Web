@@ -2,8 +2,8 @@
     width: 12vw;
     outline: none;
     position: absolute;
-    left: 0%;
-    transform: translate(-0%, 0vmin);
+    left: 50%;
+    transform: translate(-50%, 0vmin);
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

@@ -1,0 +1,148 @@
+:root {
+    --box_size: 14vmin;
+    --space_border_color: #050505;
+    --space_border_size: 3px;
+    --box_border_size: 0.4vw;
+    --box_border_color: #f00;
+  }
+
+.sector_main_406 {
+    width: calc(24.5 * var(--box_size));
+    border: 3px solid #1b5bc200;
+    background: #28267e00;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 25vmin);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-evenly;
+}
+
+.sector_406{  /*6:6*/
+    width: calc(6 * var(--box_size));
+    height: calc(6 * var(--box_size));
+    background-image: url("../images/sector/406/sector_main.png");
+    background-size: 100% 100%;
+    border: var(--space_border_size) solid var(--space_border_color);
+    position: relative;
+}
+
+
+
+/*space 1 */
+.sector_406_1{  /* 104 * 213 */  /* 479 * 67 */
+    position: absolute;
+    width: calc(104 * var(--box_size) / 100);
+    height: calc(213 * var(--box_size) / 100);
+    left: calc(479 * var(--box_size) / 100);
+    top: calc(67 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_2{ /* 104 * 192 */   /* 479 * 288 */
+    position: absolute;
+    width: calc(104 * var(--box_size) / 100);
+    height: calc(192 * var(--box_size) / 100);
+    left: calc(479 * var(--box_size) / 100);
+    top: calc(288 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_3{ /* 269 * 97 */   /* 314 * 488 */
+    position: absolute;
+    width: calc(269 * var(--box_size) / 100);
+    height: calc(97 * var(--box_size) / 100);
+    left: calc(314 * var(--box_size) / 100);
+    top: calc(488 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_4{ /* 177 * 96 */   /* 129 * 488 */
+    position: absolute;
+    width: calc(177 * var(--box_size) / 100);
+    height: calc(96 * var(--box_size) / 100);
+    left: calc(129 * var(--box_size) / 100);
+    top: calc(488 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_5{ /* 104 * 191 */   /* 16 * 393 */
+    position: absolute;
+    width: calc(104 * var(--box_size) / 100);
+    height: calc(191 * var(--box_size) / 100);
+    left: calc(16 * var(--box_size) / 100);
+    top: calc(393 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_6{ /* 104 * 234 */   /* 16 * 141 */
+    position: absolute;
+    width: calc(104 * var(--box_size) / 100);
+    height: calc(234 * var(--box_size) / 100);
+    left: calc(16 * var(--box_size) / 100);
+    top: calc(141 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+.sector_406_7{ /* 115 * 76 */   /* 129 * 67 */
+    position: absolute;
+    width: calc(115 * var(--box_size) / 100);
+    height: calc(76 * var(--box_size) / 100);
+    left: calc(129 * var(--box_size) / 100);
+    top: calc(67 * var(--box_size) / 100);
+    border: 0px;
+    outline: none;
+    transform: translate(0, 0);
+    filter : grayscale(1);
+}
+
+/*마우스 올려두면 색 원상복구*/
+.sector_406_1:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_2:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_3:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_4:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_5:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_6:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}
+.sector_406_7:hover{
+    filter : grayscale(0);
+    border: var(--box_border_color) var(--box_border_size) solid;
+	box-sizing: border-box;
+}

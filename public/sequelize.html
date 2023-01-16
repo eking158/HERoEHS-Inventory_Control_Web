@@ -19,6 +19,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <title>재고관리 사이트 main</title>
+
+    <style>
+        body {
+            background-color: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,9 +55,7 @@
 
     <!-- logo  -->
     <div class="logo">
-        <img class="logo_logo" src="images/logos/logo.png">
         <img class="logo_title" src="images/logos/title.png">
-        <img class="logo_logo_arobot" src="images/logos/logo_arobot.png">
     </div>
 
     <!-- searching bar (with animation)  -->
@@ -76,7 +80,7 @@
             <div class="searching_bar_etc_box">
                 <div>
                     <label class="searching_bar_text" for="object_room">창고 위치:</label>
-                    <select class="searching_bar_etc_select_box" id="object_room" name="object_room">
+                    <select class="searching_bar_etc_select_box" style="width: calc(30vmin*0.95);" id="object_room" name="object_room">
                         <option value="">모든 창고</option>
                         <option value="406">406호</option>
                         <option value="B05">창고1(B05)</option>
@@ -178,10 +182,10 @@
             location.href = "/B05";
         }
         function movepage_s2() {
-            location.href = "/B09-3/0";
+            location.href = "/B09-3/1/0";
         }
         function movepage_527() {
-            location.href = "/527/0";
+            location.href = "/527/1/0";
         }
         function movepage_utility(target) {
             if (target == "home") {

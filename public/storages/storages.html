@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="searching_bar/searching_bar.css" />
-    <link rel="stylesheet" href="logo/logo.css" />
+    <link rel="stylesheet" href="/searching_bar/searching_bar.css" />
+    <link rel="stylesheet" href="/logo/logo.css" />
     <link rel="stylesheet" href="/buttons/406_box_button.css" />
     <link rel="stylesheet" href="/buttons/box_button.css" />
     <link rel="stylesheet" href="/storages/css/storages.css" />
-    <link rel="stylesheet" href="buttons/utility_button.css" />
+    <link rel="stylesheet" href="/buttons/utility_button.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -20,8 +20,9 @@
     <!-- get storage and box number from address  -->
     <script type="text/javascript">
         var s = location.href;
+        var sector_id = parseInt(s.split('/')[4]);
         var storage_id = s.split('/')[3];
-        //document.writeln(storage_id);
+        //document.writeln(sector_id);
         if(storage_id == "B05")
             document.write("<title>창고1(B05) 재고 현황</title>");
         if(storage_id == "B09-3")
@@ -56,9 +57,7 @@
 
     <!-- logo  -->
     <div class="logo">
-        <img class="logo_logo" src="images/logos/logo.png">
-        <img class="logo_title" src="images/logos/title.png">
-        <img class="logo_logo_arobot" src="images/logos/logo_arobot.png">
+        <img class="logo_title" src="/images/logos/title.png">
     </div>
 
     <!-- searching bar (with animation)  -->
@@ -83,7 +82,7 @@
             <div class="searching_bar_etc_box">
                 <div>
                     <label class="searching_bar_text" for="object_room">창고 위치:</label>
-                    <select class="searching_bar_etc_select_box" id="object_room" name="object_room">
+                    <select class="searching_bar_etc_select_box" style="width: calc(30vmin*0.95);" id="object_room" name="object_room">
                         <script type="text/javascript">
                             if(storage_id == "406")
                               document.write("<option value= >모든 창고</option>\
@@ -135,11 +134,11 @@
         var storage_id = s.split('/')[3];
     //document.writeln(storage_id);
         if(storage_id == "B05")
-            document.write("<h1 class=title>창고1(B05) 재고 박스</h1>");
+            document.write("<h1 class=title>창고1(B05) 구역 재고 박스</h1>");
         if(storage_id == "B09-3")
             document.write("<h1 class=title>창고2(B09-3) 재고 박스</h1>");
         if(storage_id == "406")
-            document.write("<h1 class=title>406호 재고 박스</h1>");
+            document.write("<h1 class=title>406호 "+sector_id+"구역 재고 박스</h1>");
     </script>
 
     <!-- show boxes  -->
@@ -162,55 +161,86 @@
             document.write("</div>");
         }
         else if(storage_id == "406"){
-            document.write("\
+            if(sector_id == 1){
+                document.write("\
             <div class=main_406>\
-                <div class=space_1>\
-                    <input class=box_406_0 type=image img src=/images/storage/space_1/box_0.png onclick=movepage_box(0) />\
-                    <input class=box_406_1 type=image img src=/images/storage/space_1/box_1.png onclick=movepage_box(1) />\
-                    <input class=box_406_2 type=image img src=/images/storage/space_1/box_2.png onclick=movepage_box(2) />\
-                    <input class=box_406_3 type=image img src=/images/storage/space_1/box_3.png onclick=movepage_box(3) />\
-                    <input class=box_406_4 type=image img src=/images/storage/space_1/box_4.png onclick=movepage_box(4) />\
-                    <input class=box_406_6 type=image img src=/images/storage/space_1/box_6.png onclick=movepage_box(6) />\
+                <div class=space_1_406>\
+                    <input class=box_406_0 type=image img src=/images/storage/406/space_1/box_0.png onclick=movepage_box(0) />\
+                    <input class=box_406_1 type=image img src=/images/storage/406/space_1/box_1.png onclick=movepage_box(1) />\
+                    <input class=box_406_2 type=image img src=/images/storage/406/space_1/box_2.png onclick=movepage_box(2) />\
+                    <input class=box_406_3 type=image img src=/images/storage/406/space_1/box_3.png onclick=movepage_box(3) />\
+                    <input class=box_406_4 type=image img src=/images/storage/406/space_1/box_4.png onclick=movepage_box(4) />\
+                    <input class=box_406_6 type=image img src=/images/storage/406/space_1/box_6.png onclick=movepage_box(6) />\
                 </div>\
-                <div class=space_2>\
-                    <input class=box_406_5 type=image img src=/images/storage/space_2/box_5.png onclick=movepage_box(5) />\
-                    <input class=box_406_7 type=image img src=/images/storage/space_2/box_7.png onclick=movepage_box(7) />\
-                    <input class=box_406_8 type=image img src=/images/storage/space_2/box_8.png onclick=movepage_box(8) />\
+            </div>");
+            }
+            else if(sector_id == 2){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_2_406>\
+                    <input class=box_406_5 type=image img src=/images/storage/406/space_2/box_5.png onclick=movepage_box(5) />\
+                    <input class=box_406_7 type=image img src=/images/storage/406/space_2/box_7.png onclick=movepage_box(7) />\
+                    <input class=box_406_8 type=image img src=/images/storage/406/space_2/box_8.png onclick=movepage_box(8) />\
                 </div>\
-                <div class=space_3>\
-                    <input class=box_406_9 type=image img src=/images/storage/space_3/box_9.png onclick=movepage_box(9) />\
+            </div>");
+            }
+            else if(sector_id == 3){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_3_406>\
+                    <input class=box_406_9 type=image img src=/images/storage/406/space_3/box_9.png onclick=movepage_box(9) />\
                 </div>\
-                <div class=space_4>\
-                    <input class=box_406_10 type=image img src=/images/storage/space_4/box_10.png onclick=movepage_box(10) />\
+            </div>");
+            }
+            else if(sector_id == 4){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_4_406>\
+                    <input class=box_406_10 type=image img src=/images/storage/406/space_4/box_10.png onclick=movepage_box(10) />\
                 </div>\
-                <div class=space_5>\
-                    <input class=box_406_11 type=image img src=/images/storage/space_5/box_11.png onclick=movepage_box(11) />\
+            </div>");
+            }
+            else if(sector_id == 5){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_5_406>\
+                    <input class=box_406_11 type=image img src=/images/storage/406/space_5/box_11.png onclick=movepage_box(11) />\
                 </div>\
-                <div class=space_6>\
-                    <input class=box_406_12 type=image img src=/images/storage/space_6/box_12.png onclick=movepage_box(12) />\
-                    <input class=box_406_13 type=image img src=/images/storage/space_6/box_13.png onclick=movepage_box(13) />\
-                    <input class=box_406_14 type=image img src=/images/storage/space_6/box_14.png onclick=movepage_box(14) />\
-                    <input class=box_406_15 type=image img src=/images/storage/space_6/box_15.png onclick=movepage_box(15) />\
-                    <input class=box_406_16 type=image img src=/images/storage/space_6/box_16.png onclick=movepage_box(16) />\
-                    <input class=box_406_17 type=image img src=/images/storage/space_6/box_17.png onclick=movepage_box(17) />\
-                    <input class=box_406_18 type=image img src=/images/storage/space_6/box_18.png onclick=movepage_box(18) />\
-                    <input class=box_406_19 type=image img src=/images/storage/space_6/box_19.png onclick=movepage_box(19) />\
-                    <input class=box_406_20 type=image img src=/images/storage/space_6/box_20.png onclick=movepage_box(20) />\
-                    <input class=box_406_21 type=image img src=/images/storage/space_6/box_21.png onclick=movepage_box(21) />\
-                    <input class=box_406_22 type=image img src=/images/storage/space_6/box_22.png onclick=movepage_box(22) />\
+            </div>");
+            }
+            else if(sector_id == 6){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_6_406>\
+                    <input class=box_406_12 type=image img src=/images/storage/406/space_6/box_12.png onclick=movepage_box(12) />\
+                    <input class=box_406_13 type=image img src=/images/storage/406/space_6/box_13.png onclick=movepage_box(13) />\
+                    <input class=box_406_14 type=image img src=/images/storage/406/space_6/box_14.png onclick=movepage_box(14) />\
+                    <input class=box_406_15 type=image img src=/images/storage/406/space_6/box_15.png onclick=movepage_box(15) />\
+                    <input class=box_406_16 type=image img src=/images/storage/406/space_6/box_16.png onclick=movepage_box(16) />\
+                    <input class=box_406_17 type=image img src=/images/storage/406/space_6/box_17.png onclick=movepage_box(17) />\
+                    <input class=box_406_18 type=image img src=/images/storage/406/space_6/box_18.png onclick=movepage_box(18) />\
+                    <input class=box_406_19 type=image img src=/images/storage/406/space_6/box_19.png onclick=movepage_box(19) />\
+                    <input class=box_406_20 type=image img src=/images/storage/406/space_6/box_20.png onclick=movepage_box(20) />\
+                    <input class=box_406_21 type=image img src=/images/storage/406/space_6/box_21.png onclick=movepage_box(21) />\
+                    <input class=box_406_22 type=image img src=/images/storage/406/space_6/box_22.png onclick=movepage_box(22) />\
                 </div>\
-                <div class=space_7>\
-                    <input class=box_406_23 type=image img src=/images/storage/space_7/box_23.png onclick=movepage_box(23) />\
-                    <input class=box_406_24 type=image img src=/images/storage/space_7/box_24.png onclick=movepage_box(24) />\
-                    <input class=box_406_25 type=image img src=/images/storage/space_7/box_25.png onclick=movepage_box(25) />\
-                    <input class=box_406_26 type=image img src=/images/storage/space_7/box_26.png onclick=movepage_box(26) />\
-                    <input class=box_406_27 type=image img src=/images/storage/space_7/box_27.png onclick=movepage_box(27) />\
-                    <input class=box_406_28 type=image img src=/images/storage/space_7/box_28.png onclick=movepage_box(28) />\
-                    <input class=box_406_29 type=image img src=/images/storage/space_7/box_29.png onclick=movepage_box(29) />\
-                    <input class=box_406_30 type=image img src=/images/storage/space_7/box_30.png onclick=movepage_box(30) />\
+            </div>");
+            }
+            else if(sector_id == 7){
+                document.write("\
+            <div class=main_406>\
+                <div class=space_7_406>\
+                    <input class=box_406_23 type=image img src=/images/storage/406/space_7/box_23.png onclick=movepage_box(23) />\
+                    <input class=box_406_24 type=image img src=/images/storage/406/space_7/box_24.png onclick=movepage_box(24) />\
+                    <input class=box_406_25 type=image img src=/images/storage/406/space_7/box_25.png onclick=movepage_box(25) />\
+                    <input class=box_406_26 type=image img src=/images/storage/406/space_7/box_26.png onclick=movepage_box(26) />\
+                    <input class=box_406_27 type=image img src=/images/storage/406/space_7/box_27.png onclick=movepage_box(27) />\
+                    <input class=box_406_28 type=image img src=/images/storage/406/space_7/box_28.png onclick=movepage_box(28) />\
+                    <input class=box_406_29 type=image img src=/images/storage/406/space_7/box_29.png onclick=movepage_box(29) />\
+                    <input class=box_406_30 type=image img src=/images/storage/406/space_7/box_30.png onclick=movepage_box(30) />\
                 </div>\
-            </div>\
-            ");
+            </div>");
+            }
         }
     </script>
 
@@ -269,7 +299,7 @@
                     location.href = "/";
                 }
                 else if(target=="back"){
-                    location.href = "/";
+                    history.back();
                 }
                 //make popup window
                 else if(target=="add"){
@@ -283,7 +313,7 @@
                 }
             }
         function movepage_box(box_id) {
-            location.href = storage_id+"/"+ String(box_id);
+            location.href = "/"+storage_id+"/"+ String(sector_id)+"/"+ String(box_id);
         }
     </script>
 </body>
