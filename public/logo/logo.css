@@ -1,28 +1,18 @@
 .logo {
-    width: 80vmin;
-    height: 12vmin;
+    width: 90vmin;
+    height: 30vmin;
     border: 0px solid #1b5bc200;
     background: #ffffff00;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 5vmin);
+    transform: translate(-50%, 5.5vmin);
 }
-
-
-.logo_logo{
-    width: 12vmin;
-    height: 10vmin;
-    position: relative;
-    outline: none;
-    float: left;
-    filter: invert(100%);
-
-}
-
 
 .logo_title{
-    height:11vmin;
+    width: 60vmin;
+    height:12vmin;
     position: relative;
     outline: none;
-    float: left;
+    left: 50%;
+    transform: translate(-50%, 0vmin);
 }

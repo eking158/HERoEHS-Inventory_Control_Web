@@ -1,0 +1,80 @@
+/*
+검색 및 창고 재고 데이터 출력 화면용 검색창 (화면 비율때문에 새로 만듬)
+*/
+
+.searching_bar_main{
+    position: relative;
+    left: 50%;
+    height: 14vmin;
+    width: 86vmin;
+    background: none;
+    padding: 1vmin;
+    border-radius: 1vw;
+}
+
+.searching_bar_text{
+    font-size: 2vmin
+}
+
+.searching_bar_etc_box{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 3vmin;
+    width: 86vmin;
+    background: none;
+}
+.searching_bar_etc_text_box{
+    width: 30vmin;
+    height: 2.4vmin;
+}
+.searching_bar_etc_select_box{
+    width: 30vmin;
+    height: 2.4vmin;
+    font-size: 2vmin
+}
+
+.searching_bar_name{
+    position: relative;
+    height: 6vmin;
+    width: 86vmin;
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+    padding: 1vmin;
+    border-radius: 1vw;
+}
+
+.searching_bar_input_ad{
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translate(-10%, -50%);
+    background: white;
+    border: none;
+    outline: none;
+    line-height: normal;
+    width: 78vmin;
+    height: 4vmin;
+    border-radius: 1vw;
+    color: black;
+    font-size: 3.5vmin;
+    }
+
+.searching_bar_button_ad{
+    position: absolute;
+    color: #0E2F44;
+    float: right;
+    width: 5vmin;
+    height: 5vmin;
+    right: 1%;
+    top: 50%;
+    transform: translate(-1%, -50%);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 1vw;
+    background: #1a091600;
+}
+.searching_bar_button_ad:hover{
+    background: #8b8b8b;
+  }
