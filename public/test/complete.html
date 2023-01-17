@@ -3,6 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <script type="text/javascript">
             var s = location.href;
             var req_type = s.split('/')[3].split('?')[0];
@@ -10,10 +23,27 @@
             if(req_type == 'change.php'){
                 var storage_id = object_id[1].split('&')[0];
                 var box_id = object_id[2].split('&')[0];
-                document.writeln(object_id[1].split('&')[0]);
-                document.writeln(object_id[2].split('&')[0]);
-                document.writeln("send complete!");
-                location.href = "/" + storage_id + "/" + box_id;
+                var sector_id;
+                $(document).ready( function() {
+                    $.getJSON("/test/complete.json",function(data){ //json 파일 경로 수정 필요
+                        $.each(data[storage_id],function(index,value){
+                            //document.writeln(value[index]);
+                            for(i=1;i<=value["Length"];i++){
+                                for(j=0;j<value[i].length;j++){
+                                    if(value[i][j] == box_id){
+                                        sector_id = i;
+                                    }
+                                }
+                            }
+                        })
+                        //document.writeln("hello!");
+                        //document.writeln(sector_id);
+                        //document.writeln(object_id[1].split('&')[0]);
+                        //document.writeln(object_id[2].split('&')[0]);
+                        document.writeln("send_complete!");
+                        location.href = "/" + storage_id + "/" + sector_id + "/" + box_id;
+                    })
+                });
             }
             else if(req_type == 'action_page.php'){
                 //var storage_id = s.split('/')[3].split('object_room=')[1].split('&')[0];
