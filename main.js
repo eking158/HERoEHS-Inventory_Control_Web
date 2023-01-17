@@ -13,6 +13,7 @@ const itemsRouter = require('./routes/items');
 const authRouter = require('./public/login/auth');
 const authCheck = require('./public/login/authCheck.js');
 const template = require('./public/login/template.js');
+const { DATE } = require('sequelize');
 
 const app = express();
 
@@ -40,6 +41,21 @@ function save_excel(dataJSON){
       xlsx.utils.book_append_sheet(workbook, worksheet, sheetnames[i]);
   }
   xlsx.writeFile(workbook, path.join(__dirname, 'array_to_sheet_result.xlsx'));
+}
+
+function log_json(logJSON) {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+  const today = year + '-' + month  + '-' + day;
+  const presentTime = hours + ':' + minutes  + ':' + seconds;
+
+  const log = logJSON + " " + today + " " + presentTime + "\n";
+  fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
 }
 
 app.set('port', process.env.PORT || 3001);
@@ -85,14 +101,10 @@ app.get('/', (req, res) => {
     res.redirect('/auth/login');
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
-    // var html = template.HTML('Welcome',
-    //   `<hr>
-    //       <h2>메인 페이지에 오신 것을 환영합니다</h2>
-    //       <p>로그인에 성공하셨습니다.</p>`,
-    //   authCheck.statusUI(req, res)
-    // );
-    // res.send(html);
     res.sendFile(__dirname + "/public/sequelize.html");
+    const s = req.session.nickname;
+    console.log(req.session);
+    log_json(s);
     return false;
   }
 })
