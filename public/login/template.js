@@ -74,6 +74,10 @@ module.exports = {
             font-size: 12px;
             text-decoration: none; 
           }
+
+          .show_id {
+            margin-bottom: 30px;
+          }
       </style>
       </head>
       <body>
