@@ -10,3 +10,21 @@ l0voj 2023-01-18 04:49:19
 l0voj 2023-01-18 04:53:37
 l0voj 2023-01-18 04:57:48
 l0voj 2023-01-18 05:07:06
+test 2023-01-16 17:40:42
+{"name":"빵판","count":"5","L_category":"전장","S_category":"기판","room":406,"box":1,"id":30} 2023-01-17 13:18:04
+user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 3 =  name : 빵판 --> 빵  2023-01-17 13:43:44
+test 2023-01-17 13:51:05
+undefined 2023-01-17 13:55:26
+test 2023-01-18 13:19:12
+test 2023-01-18 13:19:36
+undefined 2023-01-18 13:19:39
+undefined 2023-01-18 13:19:41
+undefined 2023-01-18 13:19:42
+undefined 2023-01-18 13:19:47
+test 2023-01-18 13:19:52
+test 2023-01-18 13:20:00
+user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 3 = 3 name : 빵 --> 빵판  2023-01-18 13:20:11
+test 2023-01-18 13:20:57
+user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 3 --> 5 name : 빵판 --> 빵  2023-01-18 13:21:11
+test 2023-01-18 13:22:56
+user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 5 --> 3 name : 빵 --> 빵판  2023-01-18 13:23:06

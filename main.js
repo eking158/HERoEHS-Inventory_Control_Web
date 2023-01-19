@@ -29,7 +29,24 @@ function save_json(dataJSON){
   fs.writeFileSync(path.join(__dirname, 'public/test/inventory.json'),bookJSON);
 }
 
-function save_excel(dataJSON){
+function log_json(logJSON) {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+  const today = year + '-' + month  + '-' + day;
+  const presentTime = hours + ':' + minutes  + ':' + seconds;
+
+  const log = logJSON + " " + today + " " + presentTime + "\n";
+  fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
+}
+
+
+
+function save_excel(dataJSON) {
   const sheetnames = Object.keys(dataJSON);
   console.log(sheetnames);
   let i = sheetnames.length;
@@ -162,9 +179,13 @@ app.get('/action_page.php', function(req,res){
   const sheetnames = Object.keys(dataJSON['datas']);
   var i = sheetnames.length;
   console.log(i);
-  var data_var = ['name','count','L_category','S_category','room','box'];
-  var req_var = ['object_name','object_count','object_L_category','object_S_category','object_room','object_box'];
-  var new_var = ['new_defalut_name','object_count','new_defalut_L_category','new_defalut_S_category','object_room','new_defalut_box'];
+
+  var data_var = ['name', 'count', 'L_category', 'S_category', 'room', 'box'];
+  var req_var = ['object_name', 'object_count', 'object_L_category', 'object_S_category', 'object_room', 'object_box'];
+  var new_var = ['new_defalut_name', 'object_count', 'new_defalut_L_category', 'new_defalut_S_category', 'object_room', 'new_defalut_box'];
+
+  var log_string = "user ";
+
   while (i--) {
     //console.log(dataJSON['datas'][sheetnames[i]].name+" -- " + req.query.object_name);
     if(dataJSON['datas'][sheetnames[i]].id == req.query.object_id){
@@ -176,9 +197,14 @@ app.get('/action_page.php', function(req,res){
         if(before != after && after != ''){
           console.log(data_var[j]+" : "+before + " --> "+after);
           dataJSON['datas'][sheetnames[i]][data_var[j]] = after;
+
+          log_string = log_string + data_var[j] + " : " + before + " --> " + after + " ";   // for log
         }
-        else{
-          console.log(data_var[j]+" : "+before + " = "+after);
+
+        else {
+          console.log(data_var[j] + " : " + before + " = " + after);
+          
+          log_string = log_string + data_var[j] + " : " + before + " = " + after + " ";     // for log
         }
       }
     }
@@ -197,6 +223,9 @@ app.get('/action_page.php', function(req,res){
     //console.log(dataJSON['datas'][sheetnames.length-1]);
     //console.log(dataJSON['datas'][sheetnames.length]);
   }
+
+  log_json(log_string);          // for log
+
   save_json(dataJSON);
   res.sendFile(__dirname + "/public/test/complete.html");
 })
@@ -207,6 +236,13 @@ app.get('/change.php', function(req,res){
   console.log(dataJSON['datas'][req.query.id]); 
   console.log(dataJSON['datas'][req.query.id]['count']); 
   dataJSON['datas'][req.query.id]['count'] = req.query.number
+
+  const s = req.session.nickname;
+  console.log("---------------------");
+  console.log(req.session);
+  // const s = JSON.stringify(dataJSON['datas'][req.query.id]);
+  log_json(s);
+
 
   save_json(dataJSON);
   console.log(dataJSON['datas'][req.query.id]['count']);
