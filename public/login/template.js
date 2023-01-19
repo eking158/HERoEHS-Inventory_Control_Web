@@ -64,6 +64,16 @@ module.exports = {
           .btn:hover {
               background-color: #558B2F;
           }
+          
+          .textconvert {
+            text-align: center;
+            margin-bottom: 15px;
+          }
+          a{ 
+            color: black;
+            font-size: 12px;
+            text-decoration: none; 
+          }
       </style>
       </head>
       <body>

@@ -29,3 +29,5 @@ test 2023-01-18 13:20:57
 user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 3 --> 5 name : 빵판 --> 빵  2023-01-18 13:21:11
 test 2023-01-18 13:22:56
 user box : 1 =  room : 406 = 406 S_category : 기판 =  L_category : 전장 =  count : 5 --> 3 name : 빵 --> 빵판  2023-01-18 13:23:06
+test 2023-01-19 16:55:44
+test 2023-01-19 16:56:37

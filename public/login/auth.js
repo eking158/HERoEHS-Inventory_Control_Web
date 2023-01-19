@@ -13,8 +13,10 @@ router.get('/login', function (request, response) {
             <p><input class="login" type="text" name="userid" placeholder="아이디"></p>
             <p><input class="login" type="password" name="pwd" placeholder="비밀번호"></p>
             <p><input class="btn" type="submit" value="로그인"></p>
-            </form>            
-            <p>계정이 없으신가요?  <a href="/auth/register">회원가입</a></p> 
+            </form>
+            <div class="textconvert">
+                <a href="/auth/find_id">아이디 찾기</a> | <a href="/auth/find_password">비밀번호 찾기</a> | <a href="/auth/register">회원가입</a>
+            </div>
         `, '');
     response.send(html);
 });
@@ -54,6 +56,37 @@ router.get('/logout', function (request, response) {
     });
 });
 
+// 아이디 찾기 화면
+router.get('/find_id', function (request, response) {
+    var title = '회원가입';
+    var html = template.HTML(title, `
+    <h2>아이디 찾기</h2>
+    <form action="/auth/register_process" method="post">
+    <p>가입하신 이름을 입력하세요</p>
+    <p><input class="login" type="text" name="username" placeholder="이름"></p>
+    <p><input class="btn" type="submit" value="검색"></p>
+    </form>            
+    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
+    `, '');
+    response.send(html);
+});
+
+// 비밀번호 찾기 화면
+router.get('/find_password', function (request, response) {
+    var title = '회원가입';
+    var html = template.HTML(title, `
+    <h2>회원가입</h2>
+    <form action="/auth/register_process" method="post">
+    <p><input class="login" type="text" name="username" placeholder="이름"></p>
+    <p><input class="login" type="text" name="userid" placeholder="아이디"></p>
+    <p><input class="login" type="password" name="pwd" placeholder="비밀번호"></p>    
+    <p><input class="login" type="password" name="pwd2" placeholder="비밀번호 재확인"></p>
+    <p><input class="btn" type="submit" value="제출"></p>
+    </form>            
+    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
+    `, '');
+    response.send(html);
+});
 
 // 회원가입 화면
 router.get('/register', function (request, response) {
