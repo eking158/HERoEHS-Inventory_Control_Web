@@ -105,10 +105,10 @@ app.get('/', (req, res) => {
     res.redirect('/auth/login');
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
-    res.sendFile(__dirname + "/public/sequelize.html");
-    const s = req.session.nickname;
-    console.log(req.session);
+    const s = req.session.nickname;   // for log
     log_json(s);
+
+    res.sendFile(__dirname + "/public/sequelize.html");
     return false;
   }
 })
@@ -152,6 +152,9 @@ app.get('/action_page.php', function (req, res) {
   var data_var = ['name', 'count', 'L_category', 'S_category', 'room', 'box'];
   var req_var = ['object_name', 'object_count', 'object_L_category', 'object_S_category', 'object_room', 'object_box'];
   var new_var = ['new_defalut_name', 'object_count', 'new_defalut_L_category', 'new_defalut_S_category', 'object_room', 'new_defalut_box'];
+
+  var log_string = "user ";
+
   while (i--) {
     //console.log(dataJSON['datas'][sheetnames[i]].name+" -- " + req.query.object_name);
     if (dataJSON['datas'][sheetnames[i]].id == req.query.object_id) {
@@ -163,9 +166,13 @@ app.get('/action_page.php', function (req, res) {
         if (before != after && after != '') {
           console.log(data_var[j] + " : " + before + " --> " + after);
           dataJSON['datas'][sheetnames[i]][data_var[j]] = after;
+
+          log_string = log_string + data_var[j] + " : " + before + " --> " + after + " ";   // for log
         }
         else {
           console.log(data_var[j] + " : " + before + " = " + after);
+          
+          log_string = log_string + data_var[j] + " : " + before + " = " + after + " ";     // for log
         }
       }
     }
@@ -184,6 +191,9 @@ app.get('/action_page.php', function (req, res) {
     //console.log(dataJSON['datas'][sheetnames.length-1]);
     //console.log(dataJSON['datas'][sheetnames.length]);
   }
+
+  log_json(log_string);          // for log
+
   save_json(dataJSON);
   res.sendFile(__dirname + "/public/test/complete.html");
 })
@@ -194,6 +204,13 @@ app.get('/change.php', function (req, res) {
   console.log(dataJSON['datas'][req.query.id]);
   console.log(dataJSON['datas'][req.query.id]['count']);
   dataJSON['datas'][req.query.id]['count'] = req.query.number
+
+  const s = req.session.nickname;
+  console.log("---------------------");
+  console.log(req.session);
+  // const s = JSON.stringify(dataJSON['datas'][req.query.id]);
+  log_json(s);
+
 
   save_json(dataJSON);
   console.log(dataJSON['datas'][req.query.id]['count']);
