@@ -17,16 +17,16 @@ const { DATE } = require('sequelize');
 
 const app = express();
 
-function load_json(req,res){
+function load_json(req, res) {
   const dir = __dirname + "/public/test/inventory.json"
   const dataBuffer = fs.readFileSync(dir);
   const dataJSON = JSON.parse(dataBuffer);
   return dataJSON;
 }
 
-function save_json(dataJSON){
+function save_json(dataJSON) {
   const bookJSON = JSON.stringify(dataJSON)
-  fs.writeFileSync(path.join(__dirname, 'public/test/inventory.json'),bookJSON);
+  fs.writeFileSync(path.join(__dirname, 'public/test/inventory.json'), bookJSON);
 }
 
 function log_json(logJSON) {
@@ -37,8 +37,8 @@ function log_json(logJSON) {
   const hours = ('0' + date.getHours()).slice(-2);
   const minutes = ('0' + date.getMinutes()).slice(-2);
   const seconds = ('0' + date.getSeconds()).slice(-2);
-  const today = year + '-' + month  + '-' + day;
-  const presentTime = hours + ':' + minutes  + ':' + seconds;
+  const today = year + '-' + month + '-' + day;
+  const presentTime = hours + ':' + minutes + ':' + seconds;
 
   const log = logJSON + " " + today + " " + presentTime + "\n";
   fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
@@ -53,9 +53,9 @@ function save_excel(dataJSON) {
   let resData;
   const workbook = xlsx.utils.book_new();
   while (i--) {
-      const sheetname = sheetnames[i];
-      worksheet = xlsx.utils.json_to_sheet(dataJSON[sheetnames[i]]); //npo
-      xlsx.utils.book_append_sheet(workbook, worksheet, sheetnames[i]);
+    const sheetname = sheetnames[i];
+    worksheet = xlsx.utils.json_to_sheet(dataJSON[sheetnames[i]]); //npo
+    xlsx.utils.book_append_sheet(workbook, worksheet, sheetnames[i]);
   }
   xlsx.writeFile(workbook, path.join(__dirname, 'array_to_sheet_result.xlsx'));
 }
@@ -68,10 +68,10 @@ function log_json(logJSON) {
   const hours = ('0' + date.getHours()).slice(-2);
   const minutes = ('0' + date.getMinutes()).slice(-2);
   const seconds = ('0' + date.getSeconds()).slice(-2);
-  const today = year + '-' + month  + '-' + day;
-  const presentTime = hours + ':' + minutes  + ':' + seconds;
+  const today = year + '-' + month + '-' + day;
+  const presentTime = hours + ':' + minutes + ':' + seconds;
 
-  const log = logJSON + " " + today + " " + presentTime + "\n";
+  const log = today + " " + presentTime + " " + logJSON + " \n";
   fs.appendFileSync(path.join(__dirname, "public/login/log.txt"), log);
 }
 
@@ -97,7 +97,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/index', indexRouter);
 app.use('/items', itemsRouter);
 
-app.get('/searching_database', function(req,res){
+app.get('/searching_database', function (req, res) {
   res.sendFile(__dirname + "/public/searching/searching_database.html");
 })
 
@@ -120,7 +120,7 @@ app.get('/', (req, res) => {
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
     res.sendFile(__dirname + "/public/sequelize.html");
     const s = req.session.nickname;
-    console.log(req.session);
+    // console.log(req.session);    // userid도 출력됨
     log_json(s);
     return false;
   }
@@ -130,52 +130,53 @@ app.get('/', (req, res) => {
 app.use('/auth', authRouter);
 // localhost:3000/main 브라우저에 res.sendFile() 내부의 파일이 띄워진다.
 
-app.get('/406', function(req,res){
-    res.sendFile(__dirname + "/public/storages/sector.html");
-  })
-app.get('/B05', function(req,res){
-    res.sendFile(__dirname + "/public/storages/sector.html");
-  })
-app.get('/B09-3', function(req,res){
-    res.sendFile(__dirname + "/public/storages/sector.html");
+app.get('/406', function (req, res) {
+  res.sendFile(__dirname + "/public/storages/sector.html");
 })
-app.get('/527', function(req,res){
+app.get('/B05', function (req, res) {
+  res.sendFile(__dirname + "/public/storages/sector.html");
+})
+app.get('/B09-3', function (req, res) {
+  res.sendFile(__dirname + "/public/storages/sector.html");
+})
+app.get('/527', function (req, res) {
   res.sendFile(__dirname + "/public/storages/sector.html");
 })
 
-app.get('/406/:sector', function(req,res){
+app.get('/406/:sector', function (req, res) {
   res.sendFile(__dirname + "/public/storages/storages.html");
 })
-app.get('/B05/:sector', function(req,res){
+app.get('/B05/:sector', function (req, res) {
   res.sendFile(__dirname + "/public/storages/storages.html");
 })
-app.get('/B09-3/:sector', function(req,res){
+app.get('/B09-3/:sector', function (req, res) {
   res.sendFile(__dirname + "/public/storages/storages.html");
 })
-app.get('/527/:sector', function(req,res){
+app.get('/527/:sector', function (req, res) {
   res.sendFile(__dirname + "/public/storages/storages.html");
 })
 
-app.get('/406/:sector/:id', function(req,res){
+app.get('/406/:sector/:id', function (req, res) {
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
-app.get('/B05/:sector/:id', function(req,res){
+app.get('/B05/:sector/:id', function (req, res) {
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
-app.get('/B09-3/:sector/:id', function(req,res){
+app.get('/B09-3/:sector/:id', function (req, res) {
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
-app.get('/527/:sector/:id', function(req,res){
+app.get('/527/:sector/:id', function (req, res) {
   res.sendFile(__dirname + "/public/test/inventory.html");
 })
 
-app.get('/search', function(req,res){
+app.get('/search', function (req, res) {
   res.sendFile(__dirname + "/public/searching/searching.html");
 })
 
-app.get('/action_page.php', function(req,res){
+app.get('/action_page.php', function (req, res) {
+  console.log(req.session.nickname);
   console.log(req.query); //상세물품변경
-  let dataJSON = load_json(req,res);
+  let dataJSON = load_json(req, res);
   const sheetnames = Object.keys(dataJSON['datas']);
   var i = sheetnames.length;
   console.log(i);
@@ -184,39 +185,37 @@ app.get('/action_page.php', function(req,res){
   var req_var = ['object_name', 'object_count', 'object_L_category', 'object_S_category', 'object_room', 'object_box'];
   var new_var = ['new_defalut_name', 'object_count', 'new_defalut_L_category', 'new_defalut_S_category', 'object_room', 'new_defalut_box'];
 
-  var log_string = "user ";
+  var log_string = req.session.nickname;
 
   while (i--) {
     //console.log(dataJSON['datas'][sheetnames[i]].name+" -- " + req.query.object_name);
-    if(dataJSON['datas'][sheetnames[i]].id == req.query.object_id){
+    if (dataJSON['datas'][sheetnames[i]].id == req.query.object_id) {
       var j = data_var.length;
-      while (j--){
+      while (j--) {
         var before = dataJSON['datas'][sheetnames[i]][data_var[j]];
         var after = req.query[req_var[j]];
         //console.log(data_var[j] +" --> "+req_var[j]);
-        if(before != after && after != ''){
-          console.log(data_var[j]+" : "+before + " --> "+after);
+        if (before != after && after != '') {
+          console.log(data_var[j] + " : " + before + " --> " + after);
           dataJSON['datas'][sheetnames[i]][data_var[j]] = after;
 
-          log_string = log_string + data_var[j] + " : " + before + " --> " + after + " ";   // for log
+          log_string = log_string + " {" + data_var[j] + " : " + before + " -> " + after + "}";   // for log
         }
 
         else {
           console.log(data_var[j] + " : " + before + " = " + after);
-          
-          log_string = log_string + data_var[j] + " : " + before + " = " + after + " ";     // for log
         }
       }
     }
   }
-  if(sheetnames.length == req.query.new_defalut_id){
+  if (sheetnames.length == req.query.new_defalut_id) {
     console.log("new part!");
-    var j = data_var.length+1;
-    var inner_string = {}; 
-    while (j-->1){
-      inner_string[data_var[data_var.length-j]]=req.query[new_var[data_var.length-j]];
+    var j = data_var.length + 1;
+    var inner_string = {};
+    while (j-- > 1) {
+      inner_string[data_var[data_var.length - j]] = req.query[new_var[data_var.length - j]];
     }
-    inner_string["id"]=req.query.new_defalut_id;
+    inner_string["id"] = req.query.new_defalut_id;
     //console.log(inner_string);
     dataJSON['datas'].push(inner_string);
     //console.log(dataJSON['datas'][sheetnames.length-2]);
@@ -230,11 +229,11 @@ app.get('/action_page.php', function(req,res){
   res.sendFile(__dirname + "/public/test/complete.html");
 })
 
-app.get('/change.php', function(req,res){
+app.get('/change.php', function (req, res) {
   console.log(req.query);
-  let dataJSON = load_json(req,res);
-  console.log(dataJSON['datas'][req.query.id]); 
-  console.log(dataJSON['datas'][req.query.id]['count']); 
+  let dataJSON = load_json(req, res);
+  console.log(dataJSON['datas'][req.query.id]);
+  console.log(dataJSON['datas'][req.query.id]['count']);
   dataJSON['datas'][req.query.id]['count'] = req.query.number
 
   const s = req.session.nickname;
