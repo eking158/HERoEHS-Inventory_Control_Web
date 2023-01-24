@@ -17,7 +17,7 @@ const { DATE } = require('sequelize');
 
 const app = express();
 
-function load_json(req,res){
+function load_json(){
   const dir = __dirname + "/public/test/inventory.json"
   const dataBuffer = fs.readFileSync(dir);
   const dataJSON = JSON.parse(dataBuffer);
@@ -175,7 +175,7 @@ app.get('/search', function(req,res){
 
 app.get('/action_page.php', function(req,res){
   console.log(req.query); //상세물품변경
-  let dataJSON = load_json(req,res);
+  let dataJSON = load_json();
   const sheetnames = Object.keys(dataJSON['datas']);
   var i = sheetnames.length;
   console.log(i);
@@ -232,7 +232,7 @@ app.get('/action_page.php', function(req,res){
 
 app.get('/change.php', function(req,res){
   console.log(req.query);
-  let dataJSON = load_json(req,res);
+  let dataJSON = load_json();
   console.log(dataJSON['datas'][req.query.id]); 
   console.log(dataJSON['datas'][req.query.id]['count']); 
   dataJSON['datas'][req.query.id]['count'] = req.query.number

@@ -46,36 +46,36 @@
       //$( "#dialog" ).dialog();
       $( "#tabs" ).tabs();
       $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
-          $.each(data["datas"],function(index,value){
-            if(value.room==storage_id && value.box==box_id){
-              $('#picture').attr("src","/images/objects/"+value.name+".png");
-              $('#mp').append(
-                "<div class=list_box onclick=detail("+value.id+")>\
-                  <table class=list_box_table height=100%>\
+        $.each(data["datas"],function(index,value){
+          if(value.room==storage_id && value.box==box_id){
+            $('#picture').attr("src","/images/objects/"+value.name+".png");
+            $('#mp').append(
+              "<div class=list_box onclick=detail("+value.id+")>\
+                <table class=list_box_table height=100%>\
+                <tr>\
+                    <td width=20% rowspan=2>\
+                      <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/no_picture.png';>\
+                    </td>\
+                    <td width=28%>물품명: " +value.name+"</td>\
+                    <td width=15%>창고 위치: " +value.room+"</td>\
+                    <td width=25%>대분류: " +value.L_category+"</td>\
+                    <td width=32% class=text-center rowspan=2 style=font-size:1.6vmin;>"+value.etc+"</td>\
+                  </tr>\
                   <tr>\
-                      <td width=20% rowspan=2>\
-                        <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/no_picture.png';>\
-                      </td>\
-                      <td width=28%>물품명: " +value.name+"</td>\
-                      <td width=15%>창고 위치: " +value.room+"</td>\
-                      <td width=25%>대분류: " +value.L_category+"</td>\
-                      <td width=32% class=text-center rowspan=2 style=font-size:1.6vmin;>"+value.etc+"</td>\
-                    </tr>\
-                    <tr>\
-                      <td>수량: " +value.count+"</td>\
-                      <td>박스 위치: " +value.box+"</td>\
-                      <td>소분류: " +value.S_category+"</td>\
-                    </tr>\
-                    </table>\
-                  </div>"
-              );           
-            };
-            $('input[name=new_defalut_id]').attr('value',data["datas"].length);
-            $('input[name=new_defalut_name]').attr('value','-');
-            $('input[name=new_defalut_box]').attr('value',0);
-            $('input[name=new_defalut_L_category]').attr('value','-');
-            $('input[name=new_defalut_S_category]').attr('value','-');
-          })
+                    <td>수량: " +value.count+"</td>\
+                    <td>박스 위치: " +value.box+"</td>\
+                    <td>소분류: " +value.S_category+"</td>\
+                  </tr>\
+                  </table>\
+                </div>"
+            );           
+          };
+          $('input[name=new_defalut_id]').attr('value',data["datas"].length);
+          $('input[name=new_defalut_name]').attr('value');
+          $('input[name=new_defalut_box]').attr('value',0);
+          $('input[name=new_defalut_L_category]').attr('value');
+          $('input[name=new_defalut_S_category]').attr('value');
+        })
       })
     });
     //make popup page data
@@ -274,6 +274,9 @@
           <!-- edit object data  -->
           <label><물품 정보 수정></label>
           <form action="/action_page.php"> <!-- edit submit  -->
+
+            <!--input type="hidden" name="id" value="big"-->
+
             <label for="object_name">물품명:</label><br>
             <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
             <input type=number id=object_id name=object_id style=display:none;><br>

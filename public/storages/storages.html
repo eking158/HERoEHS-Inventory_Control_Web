@@ -41,10 +41,10 @@
         $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
             $.each(data["datas"],function(index,value){
             $('input[name=new_defalut_id]').attr('value',data["datas"].length);
-            $('input[name=new_defalut_name]').attr('value','-');
+            $('input[name=new_defalut_name]').attr('value');
             $('input[name=new_defalut_box]').attr('value',0);
-            $('input[name=new_defalut_L_category]').attr('value','-');
-            $('input[name=new_defalut_S_category]').attr('value','-');
+            $('input[name=new_defalut_L_category]').attr('value');
+            $('input[name=new_defalut_S_category]').attr('value');
             })
         })
         });

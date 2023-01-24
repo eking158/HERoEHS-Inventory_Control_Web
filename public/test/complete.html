@@ -23,6 +23,7 @@
             if(req_type == 'change.php'){
                 var storage_id = object_id[1].split('&')[0];
                 var box_id = object_id[2].split('&')[0];
+                var id_id = object_id[3].split('&')[0];
                 var sector_id;
                 $(document).ready( function() {
                     $.getJSON("/test/complete.json",function(data){ //json 파일 경로 수정 필요
@@ -40,21 +41,56 @@
                         //document.writeln(sector_id);
                         //document.writeln(object_id[1].split('&')[0]);
                         //document.writeln(object_id[2].split('&')[0]);
-                        document.writeln("send_complete!");
-                        location.href = "/" + storage_id + "/" + sector_id + "/" + box_id;
+                        //document.writeln("send_complete!");
+                        //location.href = "/" + storage_id + "/" + sector_id + "/" + box_id;
                     })
+                    $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
+                        //document.writeln("yo");
+                        $.each(data["datas"],function(index,value){
+                            //document.writeln("yoyo");
+                            if(value.id==id_id){
+                                $.post('/items/change?id='+value.id, function(req,res) {
+                                    //document.writeln(value["id"]);
+                                })
+                                //document.writeln(value);
+                                //document.writeln(data["datas"]);
+                            }
+                            //alert("Do whatever you want if the call completed successfully");
+                        });
+                    })
+                    document.writeln("send_complete!");
+                    location.href = "/" + storage_id + "/" + sector_id + "/" + box_id;
                 });
             }
             else if(req_type == 'action_page.php'){
-                //var storage_id = s.split('/')[3].split('object_room=')[1].split('&')[0];
-                var storage_id = s.split('/')[3].split("?")[1].split("&");
-                var i = 1;
-                var url = "search" + "?" + storage_id[0];
-                while(i++<storage_id.length-2){
-                    url = url + "&" + storage_id[i];
-                }
-                location.href = "/" + url;
-                //document.writeln(url);      
+                var id_id = s.split('/')[3].split('object_id=')[1].split('&')[0];
+                var quest_query = s.split('/')[3].split("?")[1].split("&");
+                var name_id;
+                //document.writeln(id_id);
+                $(document).ready( function() {
+                    $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
+                        $.each(data["datas"],function(index,value){
+                            if(value.id==id_id){
+                                $.post('/items/change?id='+value.id, function(req,res) {
+                                    //document.writeln(value["id"]);
+                                })
+                                //document.writeln(value["id"]);
+                                document.writeln(value["name"]);
+                                name_id = value["name"];
+                                document.writeln('hello');
+                            }
+                            //alert("Do whatever you want if the call completed successfully");
+                        })
+                        var i = 1;
+                        var url = "search?" + quest_query[0] + name_id;   //이름만 추가하면 될 듯 
+                        while(i++<quest_query.length-2){
+                            url = url + "&" + quest_query[i].split("=")[0] + '=';
+                            //document.writeln(quest_query[i]);      
+                        }
+                        location.href = "/" + url;
+                        document.writeln(url);
+                    })
+                });
             }
         </script>
     </head>
