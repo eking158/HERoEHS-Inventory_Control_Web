@@ -82,7 +82,7 @@
                             //alert("Do whatever you want if the call completed successfully");
                         })
                         var i = 1;
-                        var url = "search?" + quest_query[0] + name_id;   //이름만 추가하면 될 듯 
+                        var url = "search?" + quest_query[0].split("=")[0] + '=' + name_id;   //이름만 추가하면 될 듯 
                         while(i++<quest_query.length-2){
                             url = url + "&" + quest_query[i].split("=")[0] + '=';
                             //document.writeln(quest_query[i]);      

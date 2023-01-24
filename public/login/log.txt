@@ -125,3 +125,9 @@ user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =
 user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 32 --> 34 name : 토글스위치 =   2023-01-24 13:14:59
 user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 34 --> 32 name : 토글스위치 =   2023-01-24 13:15:17
 user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 32 --> 56 name : 토글스위치 =   2023-01-24 13:16:02
+l0voj 2023-01-24 13:33:26
+user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 56 =  name : 토글스위치 --> 토글토글치  2023-01-24 13:33:37
+user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 56 =  name : 토글토글치 --> 토글스위치  2023-01-24 13:34:35
+user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 56 =  name : 토글스위치 --> 토글토글치  2023-01-24 13:35:08
+user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 56 =  name : 토글토글치 --> 토글스위치  2023-01-24 13:35:14
+user box : 0 =  room : 406 = 406 S_category : 스위치 =  L_category : 전장 =  count : 56 --> 3 name : 토글스위치 =   2023-01-24 13:35:46
