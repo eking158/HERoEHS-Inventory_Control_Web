@@ -119,9 +119,6 @@ app.get('/', (req, res) => {
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
     res.sendFile(__dirname + "/public/sequelize.html");
-    const s = req.session.nickname;
-    // console.log(req.session);    // userid도 출력됨
-    log_json(s);
     return false;
   }
 })
@@ -174,7 +171,6 @@ app.get('/search', function (req, res) {
 })
 
 app.get('/action_page.php', function (req, res) {
-  console.log(req.session.nickname);
   console.log(req.query); //상세물품변경
   let dataJSON = load_json(req, res);
   const sheetnames = Object.keys(dataJSON['datas']);
@@ -229,19 +225,17 @@ app.get('/action_page.php', function (req, res) {
   res.sendFile(__dirname + "/public/test/complete.html");
 })
 
-app.get('/change.php', function (req, res) {
+app.get('/change.php', function (req, res) {    // 수정 필요
+  var log_string = req.session.nickname;
+  
   console.log(req.query);
   let dataJSON = load_json(req, res);
   console.log(dataJSON['datas'][req.query.id]);
   console.log(dataJSON['datas'][req.query.id]['count']);
   dataJSON['datas'][req.query.id]['count'] = req.query.number
 
-  const s = req.session.nickname;
-  console.log("---------------------");
-  console.log(req.session);
-  // const s = JSON.stringify(dataJSON['datas'][req.query.id]);
-  log_json(s);
-
+  log_string = log_string + " {count : " + "이전 수량" + " -> " + req.query.number + "}";   // for log
+  log_json(log_string);
 
   save_json(dataJSON);
   console.log(dataJSON['datas'][req.query.id]['count']);
