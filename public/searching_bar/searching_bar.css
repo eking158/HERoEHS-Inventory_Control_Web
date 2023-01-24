@@ -1,10 +1,10 @@
 .searching_bar_main{
     position: relative;
     left: 50%;
-    transform: translate(-50%, 18vmin);
+    transform: translate(-50%, 10vmin);
     height: 10vmin;
     width: 86vmin;
-    background: white;
+    background: none;
     padding: 1vmin;
     border-radius: 1vw;
 }
@@ -31,12 +31,28 @@
     height: 2.4vmin;
     font-size: 2vmin
 }
+.searching_bar_etc_button{
+    position: absolute;
+    float: right;
+    width: 3.6vmin;
+    height: 3.6vmin;
+    right: 56%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 3vw;
+    background: none;
+}
 
 .searching_bar_name{
     position: relative;
     height: 4vmin;
     width: 86vmin;
-    background: linear-gradient(to right, #757f9a, #d7dde8);
+    left: 50%;
+    transform: translate(-50%, 0vmin);
+    background: #B7ECA5;
     padding: 1vmin;
     border-radius: 1vw;
 }
@@ -52,14 +68,13 @@
     line-height: normal;
     width: 80vmin;
     height: 4vmin;
-    border-radius: 1vw;
+    border-radius: 0.8vw;
     color: black;
     font-size: 3.5vmin;
     }
 
 .searching_bar_button_ad{
     position: absolute;
-    color: #0E2F44;
     float: right;
     width: 5vmin;
     height: 5vmin;
@@ -69,9 +84,9 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    border-radius: 1vw;
-    background: #1a091600;
+    border-radius: 3vw;
+    background: none;
 }
 .searching_bar_button_ad:hover{
-    background: #8b8b8b;
+    background: #58C245;
   }

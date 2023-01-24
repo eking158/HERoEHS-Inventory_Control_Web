@@ -20,6 +20,13 @@
     align-content: space-evenly;
 }
 
+.text_B05{
+    z-index: 0;
+    font-size: 8vmin;
+    font-family: 'Jua';
+    color: red;
+}
+
 .space_2_B05{  /*14:10*/
     width: calc(14 * var(--box_B05_size));
     height: calc(10 * var(--box_B05_size));
@@ -144,6 +151,11 @@
     height: calc(var(--box_B05_1_h) * var(--box_B05_size) / 100);
     left:   calc(var(--box_B05_1_x) * var(--box_B05_size) / 100);
     top:    calc(var(--box_B05_1_y) * var(--box_B05_size) / 100);
+    background-image:url("/images/storage/B05/space_2/box_1.png");
+    background-size: cover;
+    font-size: 8vmin;
+    font-family: 'Jua';
+    color: red;
     border: 0px;
     outline: none;
     transform: translate(0, 0);
@@ -784,60 +796,60 @@
 
 /*space 7 */
 :root {
-    --box_B05_44_w: ;
-    --box_B05_44_h: ;
-    --box_B05_44_x: ;
-    --box_B05_44_y: ;
+    --box_B05_44_w: 1020;
+    --box_B05_44_h: 145;
+    --box_B05_44_x: 5;
+    --box_B05_44_y: 2;
 
-    --box_B05_45_w: ;
-    --box_B05_45_h: ;
-    --box_B05_45_x: ;
-    --box_B05_45_y: ;
+    --box_B05_45_w: 596;
+    --box_B05_45_h: 177;
+    --box_B05_45_x: 30;
+    --box_B05_45_y: 126;
 
-    --box_B05_46_w: ;
-    --box_B05_46_h: ;
-    --box_B05_46_x: ;
-    --box_B05_46_y: ;
+    --box_B05_46_w: 594;
+    --box_B05_46_h: 159;
+    --box_B05_46_x: 33;
+    --box_B05_46_y: 298;
 
-    --box_B05_47_w: ;
-    --box_B05_47_h: ;
-    --box_B05_47_x: ;
-    --box_B05_47_y: ;
+    --box_B05_47_w: 594;
+    --box_B05_47_h: 274;
+    --box_B05_47_x: 35;
+    --box_B05_47_y: 452;
 
-    --box_B05_48_w: ;
-    --box_B05_48_h: ;
-    --box_B05_48_x: ;
-    --box_B05_48_y: ;
+    --box_B05_48_w: 586;
+    --box_B05_48_h: 247;
+    --box_B05_48_x: 44;
+    --box_B05_48_y: 730;
 
-    --box_B05_49_w: ;
-    --box_B05_49_h: ;
-    --box_B05_49_x: ;
-    --box_B05_49_y: ;
+    --box_B05_49_w: 363;
+    --box_B05_49_h: 158;
+    --box_B05_49_x: 654;
+    --box_B05_49_y: 144;
 
-    --box_B05_50_w: ;
-    --box_B05_50_h: ;
-    --box_B05_50_x: ;
-    --box_B05_50_y: ;
+    --box_B05_50_w: 357;
+    --box_B05_50_h: 160;
+    --box_B05_50_x: 655;
+    --box_B05_50_y: 296;
 
-    --box_B05_51_w: ;
-    --box_B05_51_h: ;
-    --box_B05_51_x: ;
-    --box_B05_51_y: ;
+    --box_B05_51_w: 355;
+    --box_B05_51_h: 266;
+    --box_B05_51_x: 657;
+    --box_B05_51_y: 451;
 
-    --box_B05_52_w: ;
-    --box_B05_52_h: ;
-    --box_B05_52_x: ;
-    --box_B05_52_y: ;
+    --box_B05_52_w: 351;
+    --box_B05_52_h: 134;
+    --box_B05_52_x: 660;
+    --box_B05_52_y: 716;
 
-    --box_B05_53_w: ;
-    --box_B05_53_h: ;
-    --box_B05_53_x: ;
-    --box_B05_53_y: ;
+    --box_B05_53_w: 347;
+    --box_B05_53_h: 136;
+    --box_B05_53_x: 663;
+    --box_B05_53_y: 856;
 
-    --box_B05_54_w: ;
-    --box_B05_54_h: ;
-    --box_B05_54_x: ;
-    --box_B05_54_y: ;
+    --box_B05_54_w: 420;
+    --box_B05_54_h: 711;
+    --box_B05_54_x: 1162;
+    --box_B05_54_y: 272;
 }
 .box_B05_44{
     position: absolute;

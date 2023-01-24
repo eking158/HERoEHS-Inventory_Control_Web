@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="searching_bar/searching_bar.css" />
     <link rel="stylesheet" href="logo/logo.css" />
     <link rel="stylesheet" href="/buttons/406_sector_button.css" />
+    <link rel="stylesheet" href="/text/texts.css" />
     <link rel="stylesheet" href="/buttons/B05_sector_button.css" />
     <link rel="stylesheet" href="/buttons/box_button.css" />
     <link rel="stylesheet" href="/storages/css/storages.css" />
@@ -14,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -50,14 +54,20 @@
     </script>
     <!-- utility bar  -->
     <div class="utility">
-        <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
-        <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+        <img class="utility_title" src="images/logos/title.png">
+        <div class="utility_space" style="width:5vmin;"></div>
         <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+        <div class="utility_space" style="width:1vmin;"></div>
+        <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+        <div class="utility_space" style="width:1vmin;"></div>
     </div>
 
-    <!-- logo  -->
+<!-- logo  -->
     <div class="logo">
-        <img class="logo_title" src="images/logos/title.png">
+        <footer id='wrapper'>
+            <img class="logo_heroes" src="images/logos/logo.png">
+            <img class="logo_arobot" src="images/logos/logo_arobot.png">
+        </footer>
     </div>
 
     <!-- searching bar (with animation)  -->
@@ -72,50 +82,31 @@
             <div class="searching_bar_etc_box">
                 <div>
                     <label class="searching_bar_text" for="object_L_category">대분류:</label>
-                    <input class="searching_bar_etc_text_box" type="text" id="object_L_category" name="object_L_category">
+                    <input class="searching_bar_etc_text_box" type="text" id="object_L_category" name="object_L_category" value="">
                 </div>
                 <div>
                     <label class="searching_bar_text" for="object_S_category">소분류:</label>
-                    <input class="searching_bar_etc_text_box" type="text" id="object_S_category" name="object_S_category">
+                    <input class="searching_bar_etc_text_box" type="text" id="object_S_category" name="object_S_category" value="">
                 </div>
             </div>
+            <br/>
             <div class="searching_bar_etc_box">
                 <div>
                     <label class="searching_bar_text" for="object_room">창고 위치:</label>
                     <select class="searching_bar_etc_select_box" style="width: calc(30vmin*0.95);" id="object_room" name="object_room">
-                        <script type="text/javascript">
-                            if(storage_id == "406")
-                              document.write("<option value= >모든 창고</option>\
-                                              <option selected=selected value=406>406호</option>\
-                                              <option value=B05>창고1(B05)</option>\
-                                              <option value=B09-3>창고2(B09-3)</option>\
-                                              <option value=527>527호</option>");
-                            if(storage_id == "B05")
-                              document.write("<option value= >모든 창고</option>\
-                                              <option value=406>406호</option>\
-                                              <option selected=selected value=B05>창고1(B05)</option>\
-                                              <option value=B09-3>창고2(B09-3)</option>\
-                                              <option value=527>527호</option>");
-                            if(storage_id == "B09-3")
-                              document.write("<option value= >모든 창고</option>\
-                                              <option value=406>406호</option>\
-                                              <option value=B05>창고1(B05)</option>\
-                                              <option selected=selected value=B09-3>창고2(B09-3)</option>\
-                                              <option value=527>527호</option>");
-                            if(storage_id == "527")
-                              document.write("<option value= >모든 창고</option>\
-                                              <option value=406>406호</option>\
-                                              <option value=B05>창고1(B05)</option>\
-                                              <option selected=selected value=B09-3>창고2(B09-3)</option>\
-                                              <option value=527>527호</option>");
-                          </script>
+                        <option value="">모든 창고</option>
+                        <option value="406">406호</option>
+                        <option value="B05">창고1(B05)</option>
+                        <option value="B09-3">창고2(B09-3)</option>
+                        <option value="527">527호</option>
                     </select>
                 </div>
                 <div>
                     <label class="searching_bar_text" for="object_box">박스 위치(숫자):</label>
-                    <input class="searching_bar_etc_text_box" type="number" id="object_box" name="object_box">
+                    <input class="searching_bar_etc_text_box" type="number" id="object_box" name="object_box" value="" min="0">
                 </div>
             </div>
+            <br/>
             <div class="searching_bar_etc_box">
                 <div>
                     <label class="searching_bar_text" >소모품 여부:</label>
@@ -124,9 +115,14 @@
                     <input type="radio" id="consumables" name="consumables_check" value="consumables">
                     <label class="searching_bar_text" for="consumables">소모품</label>
                 </div>
+                <button class="searching_bar_etc_button" type="submit">
+                    <i style="font-size: 2vmin" class="fas fa-search"></i>
+                </button>
             </div>
           </form> 
     </div><br><br>
+
+
 
     <!-- print stroage name  -->
     <script type="text/javascript">
@@ -134,11 +130,11 @@
         var storage_id = s.split('/')[3];
     //document.writeln(storage_id);
         if(storage_id == "B05")
-            document.write("<h1 class=title>창고1(B05)</h1>");
+            document.write("<h1 class=text_1>창고1(B05)</h1>");
         if(storage_id == "B09-3")
-            document.write("<h1 class=title>창고2(B09-3)</h1>");
+            document.write("<h1 class=text_1>창고2(B09-3)</h1>");
         if(storage_id == "406")
-            document.write("<h1 class=title>406호</h1>");
+            document.write("<h1 class=text_1>406호</h1>");
     </script>
 
     <!-- show boxes  -->
@@ -185,17 +181,17 @@
             <input style="width: 70%;" type="text" id="new_defalut_name" name="new_defalut_name"><br>
             <input type=number id=new_defalut_id name=new_defalut_id style=display:none;><br>
             <label for="object_L_category">대분류:</label><br>
-            <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br>
+            <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br><br>
             <label for="object_S_category">소분류:</label><br>
-            <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br>
+            <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br><br>
             <label for="object_room">창고 위치:</label><br>
             <select style="width: 30%;" id="object_room" name="object_room">
                 <option value="406">406호</option>
                 <option value="B05">창고1(B05)</option>
                 <option value="B09-3">창고2(B09-3)</option>
-            </select><br>
+            </select><br><br>
             <label for="object_box">박스 위치(숫자):</label><br>
-            <input style="width: 30%;" type="number" id="new_defalut_box" name="new_defalut_box"><br>
+            <input style="width: 30%;" type="number" id="new_defalut_box" name="new_defalut_box"><br><br>
 
             <label>소모품 여부:</label><br>
               <input class="consumable" type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">

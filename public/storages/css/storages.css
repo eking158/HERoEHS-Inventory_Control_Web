@@ -12,7 +12,10 @@
     background: #14449100;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 28vmin);
+    transform: translate(-50%, 26vmin);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 
@@ -21,11 +24,8 @@
     width: var(--button_width);
     right: 0px;
     top: 0px;
-    position: relative;
-    border: var(--storage_border_size) solid var(--storage_border_color);
     background: var(--storage_background_color);
     outline: none;
-    float: left;
     color: #ffffff;
     border-radius: 35px;
 }
@@ -39,11 +39,8 @@
     width: var(--button_width);
     right: 0px;
     top: 0px;
-    position: relative;
-    border: var(--storage_border_size) solid var(--storage_border_color);
     background: var(--storage_background_color);
     outline: none;
-    float: left;
     color: #ffffff;
     border-radius: 35px;
 }
@@ -57,11 +54,8 @@
     width: var(--button_width);
     right: 0px;
     top: 0px;
-    position: relative;
-    border: var(--storage_border_size) solid var(--storage_border_color);
     background: var(--storage_background_color);
     outline: none;
-    float: left;
     color: #ffffff;
     border-radius: 35px;
 }
@@ -74,29 +68,11 @@
     width: var(--button_width);
     right: 0px;
     top: 0px;
-    position: relative;
-    border: var(--storage_border_size) solid var(--storage_border_color);
     background: var(--storage_background_color);
     outline: none;
-    float: left;
     color: #ffffff;
     border-radius: 35px;
 }
 .storage_527_button::after {
     padding-bottom: 100%;
   }
-
-
-/* title */
-.title {
-    width: 50vmin;
-    height: 6vmin;
-    background: none;
-    border: none;
-    text-align: center;
-    font-size: 3.5vmin;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 18.5vmin);
-    margin: 0;
-}

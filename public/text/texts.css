@@ -1,0 +1,25 @@
+.text_1{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 13vmin);
+    color: black;
+    font-size: 6vmin;
+    font-weight: bold;
+    font-family: 'Jua';
+    }
+
+    .text_2{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 9vmin);
+        color: black;
+        font-size: 5vmin;
+        font-weight: bold;
+        font-family: 'Jua';
+        }
+
+        .text_3{
+            color: black;
+            font-size: 1vmin;
+            font-weight: bold;
+            }

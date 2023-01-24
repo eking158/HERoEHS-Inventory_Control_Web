@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/test/css/list_box.css" />
   <link rel="stylesheet" href="/buttons/utility_button.css" />
-  <link rel="stylesheet" href="/searching_bar/searching_bar_2.css" />
+  <link rel="stylesheet" href="/text/texts.css" />
+  <link rel="stylesheet" href="/logo/logo.css" />
+  <link rel="stylesheet" href="/searching_bar/searching_bar_3.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -18,6 +20,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
   <!-- get current storage and box number from address  -->
   <script type="text/javascript">
@@ -56,18 +61,18 @@
                     <td width=20% rowspan=2>\
                       <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/no_picture.png';>\
                     </td>\
-                    <td width=28%>물품명: " +value.name+"</td>\
-                    <td width=15%>창고 위치: " +value.room+"</td>\
-                    <td width=25%>대분류: " +value.L_category+"</td>\
+                    <td width=28% style=font-size:3vmin;>" +value.name+"</td>\
+                    <td width=22% style=font-size:2.2vmin;>창고 위치: " +value.room+"</td>\
+                    <td width=25% style=font-size:2.2vmin;>대분류: " +value.L_category+"</td>\
                     <td width=32% class=text-center rowspan=2 style=font-size:1.6vmin;>"+value.etc+"</td>\
                   </tr>\
                   <tr>\
                     <td>수량: " +value.count+"</td>\
-                    <td>박스 위치: " +value.box+"</td>\
-                    <td>소분류: " +value.S_category+"</td>\
+                    <td style=font-size:2.2vmin;>박스 위치: " +value.box+"</td>\
+                    <td style=font-size:2.2vmin;>소분류: " +value.S_category+"</td>\
                   </tr>\
                   </table>\
-                </div>"
+                </div><br>"
             );           
           };
           $('input[name=new_defalut_id]').attr('value',data["datas"].length);
@@ -124,80 +129,71 @@
   <body>
     <!-- utility bar  -->
     <div class="utility">
-      <input class="utility_button" type="image" value="back" title="뒤로 돌아가기" img src="/images/icons/back.png" onclick="movepage_utility('back')" />
-      <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+      <img class="utility_title" src="/images/logos/title.png">
+      <div class="utility_space" style="width:5vmin;"></div>
       <input class="utility_button" type="image" value="home" title="홈 화면으로 돌아가기" img src="/images/icons/home.png" onclick="movepage_utility('home')" />
+      <div class="utility_space" style="width:1vmin;"></div>
+      <input class="utility_button" type="image" value="add" title="물품 추가" img src="/images/icons/add.png" onclick="movepage_utility('add')" />
+      <div class="utility_space" style="width:1vmin;"></div>
+  </div>
+
+  <!-- logo  -->
+  <div class="logo">
+      <img class="logo_heroes" src="/images/logos/logo.png">
+      <img class="logo_arobot" src="/images/logos/logo_arobot.png">
   </div>
 
   <!-- searching bar (with animation)  -->
   <div class="searching_bar_main" style="transform: translate(-50%, 5vmin);">
-    <form action="/search">
-        <div class="searching_bar_name">
-            <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name">
-            <button class="searching_bar_button_ad" type="submit">
-                <i style="font-size: 2vmin" class="fas fa-search"></i>
-            </button>
-        </div>
-        <div class="searching_bar_etc_box">
-            <div>
-                <label class="searching_bar_text" for="object_L_category">대분류:</label>
-                <input class="searching_bar_etc_text_box" type="text" id="object_L_category" name="object_L_category">
-            </div>
-            <div>
-                <label class="searching_bar_text" for="object_S_category">소분류:</label>
-                <input class="searching_bar_etc_text_box" type="text" id="object_S_category" name="object_S_category">
-            </div>
-        </div>
-        <div class="searching_bar_etc_box">
-            <div>
-                <label class="searching_bar_text" for="object_room">창고 위치:</label>
-                <select class="searching_bar_etc_select_box" style="width: calc(30vmin*0.924);" id="object_room" name="object_room">
-                    <script type="text/javascript">
-                      if(storage_id == "406")
-                        document.write("<option value= >모든 창고</option>\
-                                        <option selected=selected value=406>406호</option>\
-                                        <option value=B05>창고1(B05)</option>\
-                                        <option value=B09-3>창고2(B09-3)</option>\
-                                        <option value=527>527호</option>");
-                      if(storage_id == "B05")
-                        document.write("<option value= >모든 창고</option>\
-                                        <option value=406>406호</option>\
-                                        <option selected=selected value=B05>창고1(B05)</option>\
-                                        <option value=B09-3>창고2(B09-3)</option>\
-                                        <option value=527>527호</option>");
-                      if(storage_id == "B09-3")
-                        document.write("<option value= >모든 창고</option>\
-                                        <option value=406>406호</option>\
-                                        <option value=B05>창고1(B05)</option>\
-                                        <option selected=selected value=B09-3>창고2(B09-3)</option>\
-                                        <option value=527>527호</option>");
-                      if(storage_id == "527")
-                        document.write("<option value= >모든 창고</option>\
-                                        <option value=406>406호</option>\
-                                        <option value=B05>창고1(B05)</option>\
-                                        <option value=B09-3>창고2(B09-3)</option>\
-                                        <option selected=selected value=527>527호</option>");
-                    </script>
-                </select>
-            </div>
-            <div>
-                <label class="searching_bar_text" for="object_box">박스 위치(숫자):</label>
-                <script type="text/javascript">
-                  document.write("<input class=searching_bar_etc_text_box type=number id=object_box name=object_box value="+box_id+">");
-                </script>
-            </div>
-        </div>
-        <div class="searching_bar_etc_box">
-            <div>
-                <label class="searching_bar_text" >소모품 여부:</label>
+      <form action="/search">
+          <div class="searching_bar_name">
+              <input class="searching_bar_input_ad" type="text" id="object_name" name="object_name">
+              <button class="searching_bar_button_ad" type="submit">
+                  <i style="font-size: 2vmin" class="fas fa-search"></i>
+              </button>
+          </div>
+          <div class="searching_bar_etc_box">
+              <div>
+                  <label class="searching_bar_text" for="object_L_category">대분류:</label>
+                  <input class="searching_bar_etc_text_box" type="text" id="object_L_category" name="object_L_category" value="">
+              </div>
+              <div>
+                  <label class="searching_bar_text" for="object_S_category">소분류:</label>
+                  <input class="searching_bar_etc_text_box" type="text" id="object_S_category" name="object_S_category" value="">
+              </div>
+          </div>
+          <br/>
+          <div class="searching_bar_etc_box">
+              <div>
+                  <label class="searching_bar_text" for="object_room">창고 위치:</label>
+                  <select class="searching_bar_etc_select_box" style="width: calc(30vmin*0.95);" id="object_room" name="object_room">
+                      <option value="">모든 창고</option>
+                      <option value="406">406호</option>
+                      <option value="B05">창고1(B05)</option>
+                      <option value="B09-3">창고2(B09-3)</option>
+                      <option value="527">527호</option>
+                  </select>
+              </div>
+              <div>
+                  <label class="searching_bar_text" for="object_box">박스 위치(숫자):</label>
+                  <input class="searching_bar_etc_text_box" type="number" id="object_box" name="object_box" value="" min="0">
+              </div>
+          </div>
+          <br/>
+          <div class="searching_bar_etc_box">
+              <div>
+                  <label class="searching_bar_text" >소모품 여부:</label>
                   <input type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
                   <label class="searching_bar_text" for="no_consumables">비소모품</label>
                   <input type="radio" id="consumables" name="consumables_check" value="consumables">
                   <label class="searching_bar_text" for="consumables">소모품</label>
-            </div>
-        </div>
-      </form> 
-</div><br><br>
+              </div>
+              <button class="searching_bar_etc_button" type="submit">
+                  <i style="font-size: 2vmin" class="fas fa-search"></i>
+              </button>
+          </div>
+        </form> 
+  </div><br/><br/>
   
   
     <div class="container">
@@ -206,13 +202,13 @@
         <h4 class=text-center>.</h4>
         <script type="text/javascript">
           if(storage_id == "B05")
-            document.write("<p style=font-size:4vmin; class=text-center>창고1(B05) "+box_id+"번 박스 재고 목록</p>");
+            document.write("<p class=text_2>창고1(B05) "+box_id+"번 박스 재고 목록</p>");
           if(storage_id == "B09-3")
-            document.write("<p style=font-size:4vmin; class=text-center >창고2(B09-3) 재고 목록</p>");
+            document.write("<p class=text_2>창고2(B09-3) 재고 목록</p>");
           if(storage_id == "406")
-            document.write("<p style=font-size:4vmin; class=text-center>406호 "+box_id+"번 박스 재고 목록</p>");
+            document.write("<p class=text_2>406호 "+box_id+"번 박스 재고 목록</p>");
           if(storage_id == "527")
-            document.write("<p style=font-size:4vmin; class=text-center>527호 재고 목록</p>");
+            document.write("<p class=text_2>527호 재고 목록</p>");
         </script>
         <!-- if there are no datas, show messages  -->
         <style>
@@ -223,7 +219,7 @@
             font-weight: 300;
             font-size: 4vmin;
             color: rgb(187, 5, 5);
-            transform: translate(-50%, 10vmin);
+            transform: translate(-50%, 18vmin);
           }
         </style>
         <b class="no_data">There is No Datas!</b>
@@ -232,6 +228,8 @@
           </tr>
         </table>
       </div>
+
+
       <div class="col-sm-6">
         <div id="dialog" title="물품 상세" style="display:none">
           <table class="table">
@@ -272,7 +270,7 @@
           </table><br><br><br><br>
           <div>
           <!-- edit object data  -->
-          <label><물품 정보 수정></label>
+          <div style="width: 100px; border: 3px solid #58C245; text-align : center; height : 22px; line-height : 18px;"><label>물품 정보 수정</label></div><br>
           <form action="/action_page.php"> <!-- edit submit  -->
 
             <!--input type="hidden" name="id" value="big"-->
@@ -281,17 +279,17 @@
             <input style="width: 70%;" type="text" id="object_name" name="object_name"><br>
             <input type=number id=object_id name=object_id style=display:none;><br>
             <label for="object_L_category">대분류:</label><br>
-            <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br>
+            <input style="width: 70%;" type="text" id="object_L_category" name="object_L_category"><br><br>
             <label for="object_S_category">소분류:</label><br>
-            <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br>
+            <input style="width: 70%;" type="text" id="object_S_category" name="object_S_category"><br><br>
             <label for="object_room">창고 위치:</label><br>
             <select style="width: 30%;" id="object_room" name="object_room">
                 <option value="406">406호</option>
                 <option value="B05">창고1(B05)</option>
                 <option value="B09-3">창고2(B09-3)</option>
-            </select><br>
+            </select><br><br>
             <label for="object_box">박스 위치(숫자):</label><br>
-            <input style="width: 30%;" type="number" id="object_box" name="object_box"><br>
+            <input style="width: 30%;" type="number" id="object_box" name="object_box"><br><br>
   
             <label>소모품 여부:</label><br>
                 <input class="consumable" type="radio" id="no_consumables" name="consumables_check" value="no_consumables">
@@ -326,22 +324,23 @@
     <div class="container">
       <div class="col-sm-6">
         <div id="add" title="물품 추가" style="display:none">
-        <form action="/action_page.php" ><!-- edit submit  -->
+          <!-- send object datas  -->
+        <form action="/action_page.php">
           <label for="object_name">물품명:</label><br>
           <input style="width: 70%;" type="text" id="new_defalut_name" name="new_defalut_name"><br>
           <input type=number id=new_defalut_id name=new_defalut_id style=display:none;><br>
           <label for="object_L_category">대분류:</label><br>
-          <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br>
+          <input style="width: 70%;" type="text" id="new_defalut_L_category" name="new_defalut_L_category"><br><br>
           <label for="object_S_category">소분류:</label><br>
-          <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br>
+          <input style="width: 70%;" type="text" id="new_defalut_S_category" name="new_defalut_S_category"><br><br>
           <label for="object_room">창고 위치:</label><br>
           <select style="width: 30%;" id="object_room" name="object_room">
               <option value="406">406호</option>
               <option value="B05">창고1(B05)</option>
               <option value="B09-3">창고2(B09-3)</option>
-          </select><br>
+          </select><br><br>
           <label for="object_box">박스 위치(숫자):</label><br>
-          <input style="width: 30%;" type="number" id="new_defalut_box" name="new_defalut_box"><br>
+          <input style="width: 30%;" type="number" id="new_defalut_box" name="new_defalut_box"><br><br>
 
           <label>소모품 여부:</label><br>
               <input class="consumable" type="radio" id="no_consumables" name="consumables_check" value="no_consumables" checked="checked">
