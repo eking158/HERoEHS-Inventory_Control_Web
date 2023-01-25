@@ -41,7 +41,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_2{ /* 104 * 192 */   /* 479 * 288 */
     position: absolute;
@@ -52,7 +52,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_3{ /* 269 * 97 */   /* 314 * 488 */
     position: absolute;
@@ -63,7 +63,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_4{ /* 177 * 96 */   /* 129 * 488 */
     position: absolute;
@@ -74,7 +74,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_5{ /* 104 * 191 */   /* 16 * 393 */
     position: absolute;
@@ -85,7 +85,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_6{ /* 104 * 234 */   /* 16 * 141 */
     position: absolute;
@@ -96,7 +96,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 .sector_406_7{ /* 115 * 76 */   /* 129 * 67 */
     position: absolute;
@@ -107,7 +107,7 @@
     border: 0px;
     outline: none;
     transform: translate(0, 0);
-    filter : grayscale(1);
+    filter : grayscale(85%);
 }
 
 /*마우스 올려두면 색 원상복구*/

@@ -391,3 +391,14 @@ user box : 1 =  room : B05 = B05 S_category : 기판 =  L_category : 전장 =  c
 user box : 1 =  room : B05 = B05 S_category : 기판 =  L_category : 전장 =  count : 3 =  name : 빵판 =   2023-01-25 14:51:17
 user box : 1 =  room : B05 = B05 S_category : 기판 =  L_category : 전장 =  count : 3 =  name : 빵판 =   2023-01-25 14:51:18
 eking158 2023-01-25 14:51:22
+eking158 2023-01-25 14:53:39
+eking158 2023-01-25 14:55:35
+eking158 2023-01-25 15:37:35
+eking158 2023-01-25 16:19:21
+eking158 2023-01-25 16:30:53
+eking158 2023-01-25 16:32:01
+eking158 2023-01-25 16:32:02
+eking158 2023-01-25 16:32:23
+eking158 2023-01-25 16:32:44
+eking158 2023-01-25 16:34:23
+eking158 2023-01-25 16:36:48
