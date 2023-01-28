@@ -3,6 +3,7 @@ var router = express.Router();
 
 var template = require('./template.js');
 var db = require('./db');
+const { Script } = require('vm');
 
 // 로그인 화면
 router.get('/login', function (request, response) {
@@ -13,15 +14,17 @@ router.get('/login', function (request, response) {
             <p><input class="login" type="text" name="userid" placeholder="아이디"></p>
             <p><input class="login" type="password" name="pwd" placeholder="비밀번호"></p>
             <p><input class="btn" type="submit" value="로그인"></p>
-            </form>            
-            <p>계정이 없으신가요?  <a href="/auth/register">회원가입</a></p> 
+            </form>
+            <div class="textconvert">
+                <a href="/auth/find_id">아이디 찾기</a> | <a href="/auth/find_password">비밀번호 찾기</a> | <a href="/auth/register">회원가입</a>
+            </div>
         `, '');
     response.send(html);
 });
 
 // 로그인 프로세스
 router.post('/login_process', function (request, response) {
-    console.log(request.body);
+    // console.log(request.body);
     const username = {};
     const userid = request.body.userid;
     const password = request.body.pwd;
@@ -54,6 +57,73 @@ router.get('/logout', function (request, response) {
     });
 });
 
+// 아이디 찾기 화면
+router.get('/find_id', function (request, response) {
+    var title = '회원가입';
+    var html = template.HTML(title, `
+    <h2>아이디 찾기</h2>
+    <form action="/auth/find_id_process" method="post">
+    <p>가입하신 이름을 입력하세요</p>
+    <p><input class="login" type="text" name="username" placeholder="이름"></p>
+    <p><input class="btn" type="submit" value="검색"></p>
+    </form>            
+    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
+    `, '');
+    response.send(html);
+});
+
+// 아이디 찾기 프로세스
+router.post('/find_id_process', function (request, response) {
+    console.log(request.body);
+    const username = request.body.username;
+    if (username) {             // username이 입력되었는지 확인
+        db.query('SELECT userid FROM userTable WHERE username = ?', [username], function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공
+                console.log('-----------------');
+                // console.log(Object());       //////////////////////////////////수정중
+                
+                response.send('<script type="text/javascript">document.location.href="/auth/show_id";</script>');
+            } else {
+                response.send(`<script type="text/javascript">alert("이름 정보가 일치하지 않습니다."); 
+                document.location.href="/auth/find_id";</script>`);
+            }
+        });
+
+    } else {
+        response.send(`<script type="text/javascript">alert("이름을 입력하세요"); 
+        document.location.href="/auth/find_id";</script>`);
+    }
+});
+
+// 아이디 찾기 프로세스 - 아이디 알려줌
+router.get('/show_id', function (request, response) {
+    var title = '아이디 확인';
+    var html = template.HTML(title, `
+    <h2>아이디를 확인해주세요</h2>
+    <p><input class="show_id" type="text">유저 아이디 출력</p>
+    </form>            
+    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
+    `, '');
+    response.send(html);
+});
+
+// 비밀번호 찾기 화면
+router.get('/find_password', function (request, response) {
+    var title = '회원가입';
+    var html = template.HTML(title, `
+    <h2>회원가입</h2>
+    <form action="/auth/register_process" method="post">
+    <p><input class="login" type="text" name="username" placeholder="이름"></p>
+    <p><input class="login" type="text" name="userid" placeholder="아이디"></p>
+    <p><input class="login" type="password" name="pwd" placeholder="비밀번호"></p>    
+    <p><input class="login" type="password" name="pwd2" placeholder="비밀번호 재확인"></p>
+    <p><input class="btn" type="submit" value="제출"></p>
+    </form>            
+    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
+    `, '');
+    response.send(html);
+});
 
 // 회원가입 화면
 router.get('/register', function (request, response) {
