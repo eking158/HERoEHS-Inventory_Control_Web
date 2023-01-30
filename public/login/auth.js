@@ -4,6 +4,7 @@ var router = express.Router();
 var template = require('./template.js');
 var db = require('./db');
 const { Script } = require('vm');
+const { type } = require('os');
 
 // 로그인 화면
 router.get('/login', function (request, response) {
@@ -80,9 +81,7 @@ router.post('/find_id_process', function (request, response) {
         db.query('SELECT userid FROM userTable WHERE username = ?', [username], function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공
-                console.log('-----------------');
-                // console.log(Object());       //////////////////////////////////수정중
-                
+                request.session.findid = results;
                 response.send('<script type="text/javascript">document.location.href="/auth/show_id";</script>');
             } else {
                 response.send(`<script type="text/javascript">alert("이름 정보가 일치하지 않습니다."); 
@@ -98,6 +97,7 @@ router.post('/find_id_process', function (request, response) {
 
 // 아이디 찾기 프로세스 - 아이디 알려줌
 router.get('/show_id', function (request, response) {
+    console.log(request.session);
     var title = '아이디 확인';
     var html = template.HTML(title, `
     <h2>아이디를 확인해주세요</h2>
