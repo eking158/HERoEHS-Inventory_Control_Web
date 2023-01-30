@@ -97,11 +97,18 @@ router.post('/find_id_process', function (request, response) {
 
 // 아이디 찾기 프로세스 - 아이디 알려줌
 router.get('/show_id', function (request, response) {
+    let id_list = "";
     console.log(request.session);
+    json_id = request.session.findid;
+    for (const f_id in json_id) {
+        // console.log(json_id[f_id]["userid"]);
+        id_list += json_id[f_id]["userid"] + '<br>';
+    }
+
     var title = '아이디 확인';
     var html = template.HTML(title, `
     <h2>아이디를 확인해주세요</h2>
-    <p><input class="show_id" type="text">유저 아이디 출력</p>
+    <p>${id_list}</p>
     </form>            
     <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
     `, '');
