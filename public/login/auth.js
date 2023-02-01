@@ -4,6 +4,7 @@ var router = express.Router();
 var template = require('./template.js');
 var db = require('./db');
 const { Script } = require('vm');
+const { type } = require('os');
 
 // 로그인 화면
 router.get('/login', function (request, response) {
@@ -16,7 +17,7 @@ router.get('/login', function (request, response) {
             <p><input class="btn" type="submit" value="로그인"></p>
             </form>
             <div class="textconvert">
-                <a href="/auth/find_id">아이디 찾기</a> | <a href="/auth/find_password">비밀번호 찾기</a> | <a href="/auth/register">회원가입</a>
+                <a href="/auth/find_id">아이디 찾기</a> | <a href="/auth/register">회원가입</a>
             </div>
         `, '');
     response.send(html);
@@ -80,9 +81,7 @@ router.post('/find_id_process', function (request, response) {
         db.query('SELECT userid FROM userTable WHERE username = ?', [username], function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공
-                console.log('-----------------');
-                // console.log(Object());       //////////////////////////////////수정중
-                
+                request.session.findid = results;
                 response.send('<script type="text/javascript">document.location.href="/auth/show_id";</script>');
             } else {
                 response.send(`<script type="text/javascript">alert("이름 정보가 일치하지 않습니다."); 
@@ -98,27 +97,18 @@ router.post('/find_id_process', function (request, response) {
 
 // 아이디 찾기 프로세스 - 아이디 알려줌
 router.get('/show_id', function (request, response) {
+    let id_list = "";
+    console.log(request.session);
+    json_id = request.session.findid;
+    for (const f_id in json_id) {
+        // console.log(json_id[f_id]["userid"]);
+        id_list += json_id[f_id]["userid"] + '<br>';
+    }
+
     var title = '아이디 확인';
     var html = template.HTML(title, `
     <h2>아이디를 확인해주세요</h2>
-    <p><input class="show_id" type="text">유저 아이디 출력</p>
-    </form>            
-    <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
-    `, '');
-    response.send(html);
-});
-
-// 비밀번호 찾기 화면
-router.get('/find_password', function (request, response) {
-    var title = '회원가입';
-    var html = template.HTML(title, `
-    <h2>회원가입</h2>
-    <form action="/auth/register_process" method="post">
-    <p><input class="login" type="text" name="username" placeholder="이름"></p>
-    <p><input class="login" type="text" name="userid" placeholder="아이디"></p>
-    <p><input class="login" type="password" name="pwd" placeholder="비밀번호"></p>    
-    <p><input class="login" type="password" name="pwd2" placeholder="비밀번호 재확인"></p>
-    <p><input class="btn" type="submit" value="제출"></p>
+    <p>${id_list}</p>
     </form>            
     <p><a href="/auth/login">로그인화면으로 돌아가기</a></p>
     `, '');
