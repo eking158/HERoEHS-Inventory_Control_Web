@@ -58,7 +58,7 @@ function save_excel(dataJSON) {
     worksheet = xlsx.utils.json_to_sheet(dataJSON[sheetnames[i]]); //npo
     xlsx.utils.book_append_sheet(workbook, worksheet, sheetnames[i]);
   }
-  xlsx.writeFile(workbook, path.join(__dirname, 'array_to_sheet_result.xlsx'));
+  xlsx.writeFile(workbook, path.join(__dirname, '/array_to_sheet_result.xlsx'));
 }
 
 function log_json(logJSON) {

@@ -55,6 +55,8 @@
             <input class="utility_data" type="image" value="submoy" title="데이터베이스에 데이터 업로드" img src="/images/icons/database.png"/>
         </form>
         <div class="utility_space" style="width:1vmin;"></div>
+        <input class="utility_button" type="image" value="download" title="엑셀 시트 다운로드" img src="/images/icons/download.png" onclick="movepage_utility('download')" />
+        <div class="utility_space" style="width:1vmin;"></div>
         <!-- logout button -->
         <form id="logout">
             <input class="utility_button" type="image" value="logout" title="사이트 로그아웃" img src="/images/icons/logout.png" onclick="movepage_logout()"/>
@@ -209,6 +211,9 @@
             }
             else if (target == "back") {
                 location.href = "/";
+            }
+            else if (target == "download") {
+                location.href = "/items/excel_download";
             }
             //make popup window
             else if (target == "add") {

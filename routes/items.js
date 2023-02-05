@@ -6,6 +6,7 @@ const { Op } = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+var mime = require('mime');
 
 const router = express.Router();
 
@@ -81,7 +82,13 @@ router.post('/change', async (req, res, next) => {
     let dataJSON = load_json();
     try {
         Item.update({
-            count: dataJSON['datas'][req.query.id]['count']
+            name: dataJSON['datas'][req.query.id]['name'],
+            L_category: dataJSON['datas'][req.query.id]['L_category'],
+            S_category: dataJSON['datas'][req.query.id]['S_category'],
+            room: dataJSON['datas'][req.query.id]['room'],
+            box: dataJSON['datas'][req.query.id]['box'],
+            count: dataJSON['datas'][req.query.id]['count'],
+            etc: dataJSON['datas'][req.query.id]['etc']
         }, {
             where: { id: req.query.id }
         });
@@ -93,6 +100,12 @@ router.post('/change', async (req, res, next) => {
     //console.log(dataJSON['datas'][req.query.id]);
     //console.log('Do work properly?');
 });
+
+router.get('/excel_download', async (req, res, next) => {
+    res.download('./array_to_sheet_result.xlsx')
+});
+
+
 
 
 
