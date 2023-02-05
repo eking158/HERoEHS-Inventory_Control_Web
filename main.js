@@ -10,6 +10,7 @@ const session = require('express-session');
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
 const itemsRouter = require('./routes/items');
+const pictureRouter = require('./routes/picture');
 const authRouter = require('./public/login/auth');
 const authCheck = require('./public/login/authCheck.js');
 const template = require('./public/login/template.js');
@@ -96,11 +97,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/index', indexRouter);
 app.use('/items', itemsRouter);
+app.use('/picture', pictureRouter);
 
 app.get('/searching_database', function (req, res) {
   res.sendFile(__dirname + "/public/searching/searching_database.html");
 })
-
 
 app.use(session({
   resave: false,

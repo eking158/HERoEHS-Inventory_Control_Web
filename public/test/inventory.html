@@ -53,13 +53,13 @@
       $.getJSON("/test/inventory.json",function(data){ //json 파일 경로 수정 필요
         $.each(data["datas"],function(index,value){
           if(value.room==storage_id && value.box==box_id){
-            $('#picture').attr("src","/images/objects/"+value.name+".png");
+            $('#picture').attr("src","/images/objects/"+value.id+".png");
             $('#mp').append(
               "<div class=list_box onclick=detail("+value.id+")>\
                 <table class=list_box_table height=100%>\
                 <tr>\
                     <td width=20% rowspan=2>\
-                      <img class=list_box_image src='/images/objects/"+value.name+".png' onerror=this.src='/images/logos/no_picture.png';>\
+                      <img class=list_box_image src='/images/objects/"+value.id+".png' onerror=this.src='/images/logos/no_picture.png';>\
                     </td>\
                     <td width=28% style=font-size:3vmin;>" +value.name+"</td>\
                     <td width=22% style=font-size:2.2vmin;>창고 위치: " +value.room+"</td>\
@@ -90,8 +90,11 @@
             $.each(data["datas"],function(index,value){
                   if(value.room==storage_id && value.id==id)
                   {
-                      $('#picture').attr("src","/images/objects/"+value.name+".png");
+                      $('#picture').attr("src","/images/objects/"+value.id+".png");
                       $('input[name=object_id]').attr('value',value.id);
+                      $('input[name=picture_id]').attr('value',value.id);
+                      $('input[name=picture_room]').attr('value',value.room);
+                      $('input[name=picture_box]').attr('value',value.box);
                       $('#name').text(value.name);
                       $('#L_category').text(value.L_category);
                       $('#S_category').text(value.S_category);
@@ -308,6 +311,14 @@
               <input style="width: 30%;" type="number" id="object_count" name="object_count" min="0" max="100">
             </div><br><br>
             <input type="submit" value="Submit">
+          </form>
+          <form name="object_picture" method="post" enctype="multipart/form-data" action="/picture">
+            <label for="object_picture">사진:</label><br>
+            <input type="file" name="object_picture"><br>
+            <input type=hidden id=picture_id name=picture_id><br>
+            <input type=hidden id=picture_room name=picture_room><br>
+            <input type=hidden id=picture_box name=picture_box><br>
+            <input type="submit" value="사진입력">
           </form>
           <script>
             $(document).ready(function(){
